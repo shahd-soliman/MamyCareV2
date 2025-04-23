@@ -1,0 +1,11 @@
+﻿global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore;
+global using MamyCare.Entities;
+global using MamyCare.Data;
+global using FluentValidation;
+global using MamyCare.abstraction;
+global using MamyCare.Authentication;
+global using Microsoft.AspNetCore.WebUtilities;
+global using System.Text;
+global using MamyCare.Helpers;
