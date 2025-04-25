@@ -1,0 +1,62 @@
+﻿[
+  {
+    "Title": "Banana Oatmeal Mash",
+    "Ingredients": [ "1 small banana", "2 tbsp oats", "1/4 cup milk" ],
+    "ImageUrl": "Recipes/avocado-banana-blend.jpeg",
+    "NutritionalValuesId": 1
+  },
+  {
+    "Title": "Apple and Carrot Puree",
+    "Ingredients": [ "1/2 apple", "1 small carrot", "1 tsp olive oil" ],
+    "ImageUrl": "Recipes/apple-carrot-puree.jpeg",
+    "NutritionalValuesId": 2
+  },
+  {
+    "Title": "Chicken and Veggie Rice",
+    "Ingredients": [ "2 tbsp shredded chicken", "1/4 cup cooked rice", "1 tbsp peas", "1 tbsp carrots" ],
+    "ImageUrl": "Recipes/chicken-veggie-rice.jpg",
+    "NutritionalValuesId": 3
+  },
+  {
+    "Title": "Avocado and Banana Blend",
+    "Ingredients": [ "1/4 avocado", "1 small banana" ],
+    "ImageUrl": "Recipes/avocado-banana-blend.jpeg",
+    "NutritionalValuesId": 4
+  },
+  {
+    "Title": "Sweet Potato Mash",
+    "Ingredients": [ "1 small sweet potato", "1 tsp butter" ],
+    "ImageUrl": "Recipes/Sweet Potato Mash.jpeg",
+    "NutritionalValuesId": 5
+  },
+  {
+    "Title": "Egg and Spinach Scramble",
+    "Ingredients": [ "1 egg", "1 tbsp chopped spinach", "1 tsp olive oil" ],
+    "ImageUrl": "Recipes/egg-spinach-scramble.jpeg",
+    "NutritionalValuesId": 6
+  },
+  {
+    "Title": "Pear and Yogurt Mix",
+    "Ingredients": [ "1/2 pear", "2 tbsp plain yogurt" ],
+    "ImageUrl": "Recipes/pear-yogurt-mix.jpeg",
+    "NutritionalValuesId": 7
+  },
+  {
+    "Title": "Fish and Potato Bites",
+    "Ingredients": [ "2 tbsp cooked fish", "1 small potato", "1 tsp olive oil" ],
+    "ImageUrl": "Recipes/fish-potato-bites.jpg",
+    "NutritionalValuesId": 8
+  },
+  {
+    "Title": "Blueberry Oat Porridge",
+    "Ingredients": [ "2 tbsp oats", "1/4 cup milk", "1 tbsp blueberries" ],
+    "ImageUrl": "Recipes/blueberry-oat-porridge.jpg",
+    "NutritionalValuesId": 9
+  },
+  {
+    "Title": "Lentil and Veggie Soup",
+    "Ingredients": [ "2 tbsp cooked lentils", "1 tbsp carrots", "1 tbsp peas", "1/4 cup water" ],
+    "ImageUrl": "Recipes/lentil-veggie-soup.jpeg",
+    "NutritionalValuesId": 10
+  }
+]

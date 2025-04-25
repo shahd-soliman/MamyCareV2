@@ -1,5 +1,6 @@
 
 using MamyCare.Data;
+using MamyCare.DataSeed;
 using MamyCare.Seetings;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,7 +8,7 @@ namespace MamyCare
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -21,7 +22,25 @@ namespace MamyCare
             Console.WriteLine($"Email: {emailSettings?.Mail}, Host: {emailSettings?.Host}, Port: {emailSettings?.Port}");
             builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-            
+
+
+
+            var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var context = services.GetRequiredService<ApplicationDbContext>();
+
+                await context.Database.MigrateAsync(); 
+                await ContextDataSeed.SeedAsync(context); 
+            }
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
+                logger.LogError(ex, "An error occurred seeding the DB.");
+            }
 
 
             builder.Configuration.AddUserSecrets<Program>();

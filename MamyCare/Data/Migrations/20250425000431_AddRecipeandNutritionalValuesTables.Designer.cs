@@ -4,6 +4,7 @@ using MamyCare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MamyCare.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250425000431_AddRecipeandNutritionalValuesTables")]
+    partial class AddRecipeandNutritionalValuesTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -323,15 +326,16 @@ namespace MamyCare.Data.Migrations
                     b.Property<int?>("NutritionalValuesId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("NutritionalValuesId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("NutritionalValuesId")
-                        .IsUnique()
-                        .HasFilter("[NutritionalValuesId] IS NOT NULL");
+                    b.HasIndex("NutritionalValuesId1");
 
                     b.ToTable("Recipes");
                 });
@@ -555,9 +559,8 @@ namespace MamyCare.Data.Migrations
             modelBuilder.Entity("MamyCare.Entities.Recipe", b =>
                 {
                     b.HasOne("MamyCare.Entities.MamyCare.Data.NutritionalValue", "NutritionalValues")
-                        .WithOne()
-                        .HasForeignKey("MamyCare.Entities.Recipe", "NutritionalValuesId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("NutritionalValuesId1");
 
                     b.Navigation("NutritionalValues");
                 });

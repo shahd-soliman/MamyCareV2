@@ -4,6 +4,7 @@ using MamyCare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MamyCare.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250424010216_AddActivityTable")]
+    partial class AddActivityTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -225,42 +228,6 @@ namespace MamyCare.Data.Migrations
                     b.ToTable("Hospitals");
                 });
 
-            modelBuilder.Entity("MamyCare.Entities.MamyCare.Data.NutritionalValue", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Calories")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Carbohydrates")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Fiber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NaturalSugars")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Protein")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RecipeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NutritionalValues");
-                });
-
             modelBuilder.Entity("MamyCare.Entities.Mother", b =>
                 {
                     b.Property<int>("Id")
@@ -302,38 +269,6 @@ namespace MamyCare.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Mothers");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Recipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ingredients")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("NutritionalValuesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NutritionalValuesId")
-                        .IsUnique()
-                        .HasFilter("[NutritionalValuesId] IS NOT NULL");
-
-                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.Reminder", b =>
@@ -550,16 +485,6 @@ namespace MamyCare.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Recipe", b =>
-                {
-                    b.HasOne("MamyCare.Entities.MamyCare.Data.NutritionalValue", "NutritionalValues")
-                        .WithOne()
-                        .HasForeignKey("MamyCare.Entities.Recipe", "NutritionalValuesId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("NutritionalValues");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.Reminder", b =>

@@ -31,6 +31,7 @@ namespace MamyCare
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IHospitalService, HospitalService>();
             services.AddScoped<IReminderService, ReminderService>();
+            services.AddScoped<IBabyFeaturesService, BabyFeaturesService>();
 
 
             services.AddHttpContextAccessor();
