@@ -2,9 +2,9 @@
 {
     public class GetBabyProfileResponse
     {
-        public  string name;
-        public string imageurl;
+        public  string name { get; set; }
+        public string imageurl { get; set; }
         public DateOnly BirthDate { get; set; }
-        public string gender;
+        public Gender gender { get; set; }
     }
 }

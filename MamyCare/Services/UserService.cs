@@ -121,7 +121,19 @@ namespace MamyCare.Services
                 motherId = mother!.Id
             };
             await _context.Babies.AddAsync(baby, cancellationToken);
+            if (mother.Babies.Count > 1)
+            {
+                foreach (var b in mother.Babies)
+                {
+                    if(b.id == baby.id)
+                        continue;
+                    b.IsActive = false;
+                }
+            }
+
             await _context.SaveChangesAsync();
+           
+
             return Result.Success();
         }
 
@@ -175,16 +187,11 @@ namespace MamyCare.Services
                     var imageName = $"{Guid.NewGuid()}{extension}";
                     var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "BabyProfilePicture");
 
-                    if (!Directory.Exists(folderPath))
-                    {
-                        Directory.CreateDirectory(folderPath);
-                    }
-
                     var path = Path.Combine(folderPath, imageName);
                     using var stream = System.IO.File.Create(path);
                     await request.Image.CopyToAsync(stream);
 
-                    baby.ProfilePicUrl = Path.Combine("BabyProfilePicture", imageName).Replace("\\", "/");
+                    baby.ProfilePicUrl = $"BabyProfilePicture/{imageName}";
                 }
 
                 await _context.SaveChangesAsync();
@@ -199,9 +206,10 @@ namespace MamyCare.Services
                 .Include(m => m.Babies)
                 .FirstOrDefaultAsync(m => m.UserId == userid);
 
-            var baby = await _context.Babies.Where(b=>b.IsActive==true).FirstOrDefaultAsync();
+            var baby = await _context.Babies.Where(b=>b.IsActive==true).FirstOrDefaultAsync(x=>x.motherId== mother.Id);
             var profile = baby.Adapt<GetBabyProfileResponse>();
-            profile.imageurl = $"{_baseUrl}{profile.imageurl}";
+            if(baby!.ProfilePicUrl != null)
+                profile!.imageurl = $"{_baseUrl}{profile.imageurl}";
             return Result.Success(profile);
         }
 

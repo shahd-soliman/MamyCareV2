@@ -78,15 +78,19 @@ public class AccountController(IUserService userService) : ControllerBase
     }
 
     [HttpGet("GetBabyProfile")]
-    public async Task<IActionResult> GetBabyProfile()
+    public async Task<ActionResult<GetBabyProfileResponse>> GetBabyProfile()
     {
         var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
         var id = int.Parse(userIdString!);
         var result = await _userService.GetBabyProfile(id);
-
+        if (result == null)
+        {
+            return BadRequest();
+        }
         return Ok(result.Value);
     }
+
 }
 
 
