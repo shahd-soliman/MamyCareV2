@@ -1,4 +1,5 @@
 ﻿using MamyCare.Data;
+using MamyCare.Entities;
 using MamyCare.Entities.MamyCare.Data;
 using System.Text.Json;
 
@@ -38,21 +39,36 @@ namespace MamyCare.DataSeed
                 }
 
             }
-            //if (!context.Products.Any())
-            //{
-            //    var productsData = File.ReadAllText("../E-Commerce.EF/DataSeed/products.json");
-            //    var products = JsonSerializer.Deserialize<List<Product>>(productsData);
-            //    if (products?.Count > 0)
-            //    {
-            //        foreach (var item in products)
-            //        {
-            //            context.Products.Add(item);
+            if (!context.Hospitals.Any())
+            {
+                var HospitalsData = File.ReadAllText("DataSeed/hospitals.json");
+                var Hospitals = JsonSerializer.Deserialize<List<Hospital>>(HospitalsData);
+                if (Hospitals?.Count > 0)
+                {
+                    foreach (var item in Hospitals)
+                    {
+                        context.Hospitals.Add(item);
 
-            //            await context.SaveChangesAsync();
-            //        }
-            //    }
+                        await context.SaveChangesAsync();
+                    }
+                }
 
-            //}
+            }
+            if (!context.Articles.Any())
+            {
+                var ArticlesData = File.ReadAllText("DataSeed/articles.json");
+                var articles = JsonSerializer.Deserialize<List<Article>>(ArticlesData);
+                if (articles?.Count > 0)
+                {
+                    foreach (var item in articles)
+                    {
+                        context.Articles.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+
+            }
         }
 
 

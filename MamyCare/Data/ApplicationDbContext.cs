@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace MamyCare.Data
 {
-    public class ApplicationDbContext  : IdentityDbContext<ApplicationUser , IdentityRole<int> , int >
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser , IdentityRole<int> , int >
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -21,6 +21,7 @@ namespace MamyCare.Data
         public DbSet<Reminder> Reminders { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<NutritionalValue> NutritionalValues { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

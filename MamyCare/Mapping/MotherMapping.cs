@@ -22,13 +22,10 @@ namespace MamyCare.Mapping
 
 
             TypeAdapterConfig<ApplicationUser, GetProfileResponse>
-    .NewConfig()
-    .Map(dest => dest.FullName, src => $"{src.Mother.FirstName} {src.Mother.LastName}");
-            config.NewConfig<ApplicationUser, GetProfileResponse>()
-                .Map(dest => dest.FullName, src => $"{src.Mother.FirstName} {src.Mother.LastName}".Trim())
-                .Map(dest => dest.Email, src => src.Email)
-                .Map(dest => dest.Phone, src => src.Mother.Phone);
-
+       .NewConfig()
+       .Map(dest => dest.FullName, src => $"{src.Mother.FirstName} {src.Mother.LastName}".Trim())
+       .Map(dest => dest.Email, src => src.Email)
+       .Map(dest => dest.ImageUrl, src => src.Mother.ImageUrl); // Assuming 'src.Image' contains the image URL or path
 
         }
     }

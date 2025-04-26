@@ -4,7 +4,7 @@
     (
         string FullName,
         string Email,
-        string? Phone
+        string? ImageUrl
     );
 }
   

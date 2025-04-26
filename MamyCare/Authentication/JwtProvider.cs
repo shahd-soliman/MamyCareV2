@@ -26,11 +26,11 @@ namespace MamyCare.Authentication
                 issuer: _jwtOptions.Issuer,
                 audience: _jwtOptions.Audience,
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(_jwtOptions.ExpireMinutes),
+               expires: DateTime.UtcNow.AddDays(_jwtOptions.ExpireDays),
                 signingCredentials: creds
             );
             var token = new JwtSecurityTokenHandler().WriteToken(Token);
-            return (token, _jwtOptions.ExpireMinutes * 60);
+            return (token, _jwtOptions.ExpireDays * 5);
 
         }
     }

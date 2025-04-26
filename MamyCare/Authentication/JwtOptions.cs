@@ -12,7 +12,7 @@ namespace MamyCare.Authentication
         [Required]
         public string Audience { get; init; } = string.Empty;
         [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "ExpiryMinutes must be >= 1")]
-        public int ExpireMinutes { get; set; }
+       [Range(1, int.MaxValue, ErrorMessage = "ExpiryMinutes must be >= 1")]
+        public int ExpireDays { get; set; }
     }
 }

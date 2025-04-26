@@ -29,7 +29,6 @@
     <Folder Include="wwwroot\MotherProfilePicture\" />
     <Folder Include="wwwroot\BabyProfilePicture\" />
     <Folder Include="wwwroot\BabyMemoriesImages\" />
-    <Folder Include="wwwroot\Hospitals\" />
     <Folder Include="wwwroot\Activities\" />
   </ItemGroup>
 

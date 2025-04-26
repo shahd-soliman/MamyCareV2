@@ -6,13 +6,15 @@ using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using MamyCare.Seetings;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace MamyCare
 {
     public static class DependencyInjection
     {
 
-        public static IServiceCollection AddDependencies(this IServiceCollection services , IConfiguration configuration) {
+        public static IServiceCollection AddDependencies(this IServiceCollection services, IConfiguration configuration)
+        {
             services.AddControllers();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
@@ -22,7 +24,7 @@ namespace MamyCare
                 options.JsonSerializerOptions.Converters.Add(new CustomDateTimeConverter());
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             });
-         
+
 
             services.AddDbContext(configuration);
             services.AddAuthConfig(configuration);
@@ -32,6 +34,7 @@ namespace MamyCare
             services.AddScoped<IHospitalService, HospitalService>();
             services.AddScoped<IReminderService, ReminderService>();
             services.AddScoped<IBabyFeaturesService, BabyFeaturesService>();
+            services.Configure<ServerSettings>(configuration.GetSection("ServerSettings"));
 
 
             services.AddHttpContextAccessor();
@@ -50,42 +53,41 @@ namespace MamyCare
 
         public static IServiceCollection AddAuthConfig(this IServiceCollection services, IConfiguration configuration)
         {
-
-
+            // إحضار إعدادات JWT من appsettings.json
             services.Configure<Jwtoptions>(configuration.GetSection("Jwtoptions"));
 
             services.AddOptions<Jwtoptions>()
                    .Bind(configuration.GetSection("JWT"))
                    .ValidateDataAnnotations()
                    .ValidateOnStart();
-            var jwtSetting = configuration.GetSection(nameof(Jwtoptions.SectionName)).Get<Jwtoptions>();
 
+            var jwtSetting = configuration.GetSection("JWT").Get<Jwtoptions>();
+
+            // إعداد المصادقة للاعتماد فقط على JWT
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-
-                .AddJwtBearer(options =>
-                {
-                    var jwtOptions = configuration.GetSection(nameof(Jwtoptions.SectionName)).Get<Jwtoptions>();
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = jwtSetting!.Issuer,
-                        ValidAudience = jwtSetting!.Audience,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting!.Key))
-                    };
-                });
-
-
-
-            services.AddIdentity<ApplicationUser, IdentityRole<int>>(options =>
+            .AddJwtBearer(options =>
             {
-                // Password settings
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSetting!.Issuer,
+                    ValidAudience = jwtSetting!.Audience,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting!.Key))
+                };
+            });
+
+            // إعداد AddIdentity بدون أي ارتباط بالكوكي
+            services.AddIdentityCore<ApplicationUser>(options =>
+            {
+                // إعدادات كلمات المرور، المستخدمين، إلخ
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
@@ -93,14 +95,17 @@ namespace MamyCare
                 options.Password.RequireLowercase = false;
                 options.SignIn.RequireConfirmedEmail = false;
 
-                // User settings
+                // إعدادات المستخدمين
                 options.User.RequireUniqueEmail = true;
+
+                // تعطيل التأكيد المطلوب للحساب
+                options.SignIn.RequireConfirmedAccount = false;
             })
-                  .AddEntityFrameworkStores<ApplicationDbContext>()
-                  .AddDefaultTokenProviders();
+            .AddRoles<IdentityRole<int>>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
             return services;
         }
-
 
 
         public static IServiceCollection AddMapping(this IServiceCollection services)

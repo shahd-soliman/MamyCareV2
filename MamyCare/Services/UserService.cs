@@ -9,16 +9,17 @@ namespace MamyCare.Services
     public class UserService : IUserService
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
-        private readonly IWebHostEnvironment _WebHostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public UserService(ApplicationDbContext context, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IWebHostEnvironment webHostEnvironment)
+        public UserService(
+            ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager,
+            IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
             _context = context;
-            _WebHostEnvironment = webHostEnvironment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<Result<GetProfileResponse>> GetMotherProfile(int userid)
@@ -27,7 +28,6 @@ namespace MamyCare.Services
                 .Include(u => u.Mother)
                 .Where(u => u.Id == userid)
                 .SingleOrDefaultAsync();
-
             var profile = user.Adapt<GetProfileResponse>();
             return Result.Success(profile);
         }
@@ -46,7 +46,7 @@ namespace MamyCare.Services
                 {
                     if (mother.ImageUrl is not null)
                     {
-                        var oldPath = Path.Combine(_WebHostEnvironment.WebRootPath, mother.ImageUrl);
+                        var oldPath = Path.Combine(_webHostEnvironment.WebRootPath, mother.ImageUrl);
                         if (System.IO.File.Exists(oldPath))
                         {
                             System.IO.File.Delete(oldPath);
@@ -55,7 +55,7 @@ namespace MamyCare.Services
 
                     var extension = Path.GetExtension(request.Image.FileName);
                     var imageName = $"{Guid.NewGuid()}{extension}";
-                    var folderPath = Path.Combine(_WebHostEnvironment.WebRootPath, "MotherProfilePicture");
+                    var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "MotherProfilePicture");
 
                     if (!Directory.Exists(folderPath))
                     {
@@ -81,7 +81,6 @@ namespace MamyCare.Services
             var userIdString = userid.ToString();
             var user = await _userManager.FindByIdAsync(userIdString);
             var result = await _userManager.ChangePasswordAsync(user!, request.OldPassword, request.NewPassword);
-            await _signInManager.RefreshSignInAsync(user);
 
             if (result.Succeeded)
                 return Result.Success();
@@ -97,7 +96,7 @@ namespace MamyCare.Services
             {
                 var extension = Path.GetExtension(request.BabyImage.FileName);
                 var imageName = $"{Guid.NewGuid()}{extension}";
-                var path = Path.Combine(_WebHostEnvironment.WebRootPath, "BabyProfilePicture", imageName);
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "BabyProfilePicture", imageName);
                 using var stream = System.IO.File.Create(path);
                 await request.BabyImage.CopyToAsync(stream);
                 imageurl = Path.Combine("BabyProfilePicture", imageName).Replace("\\", "/");
@@ -156,7 +155,7 @@ namespace MamyCare.Services
                 {
                     if (baby.ProfilePicUrl is not null)
                     {
-                        var oldPath = Path.Combine(_WebHostEnvironment.WebRootPath, baby.ProfilePicUrl);
+                        var oldPath = Path.Combine(_webHostEnvironment.WebRootPath, baby.ProfilePicUrl);
                         if (System.IO.File.Exists(oldPath))
                         {
                             System.IO.File.Delete(oldPath);
@@ -165,7 +164,7 @@ namespace MamyCare.Services
 
                     var extension = Path.GetExtension(request.Image.FileName);
                     var imageName = $"{Guid.NewGuid()}{extension}";
-                    var folderPath = Path.Combine(_WebHostEnvironment.WebRootPath, "BabyProfilePicture");
+                    var folderPath = Path.Combine(_webHostEnvironment.WebRootPath, "BabyProfilePicture");
 
                     if (!Directory.Exists(folderPath))
                     {
