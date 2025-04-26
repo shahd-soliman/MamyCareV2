@@ -56,7 +56,7 @@ namespace MamyCare.DataSeed
             }
             if (!context.Articles.Any())
             {
-                var ArticlesData = File.ReadAllText("DataSeed/articles.json");
+                var ArticlesData = File.ReadAllText("DataSeed/Articles.json");
                 var articles = JsonSerializer.Deserialize<List<Article>>(ArticlesData);
                 if (articles?.Count > 0)
                 {

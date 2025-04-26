@@ -34,6 +34,7 @@ namespace MamyCare
             services.AddScoped<IHospitalService, HospitalService>();
             services.AddScoped<IReminderService, ReminderService>();
             services.AddScoped<IBabyFeaturesService, BabyFeaturesService>();
+            services.AddScoped<IMotherFeaturesService, MotherFeaturesService>();
             services.Configure<ServerSettings>(configuration.GetSection("ServerSettings"));
 
 

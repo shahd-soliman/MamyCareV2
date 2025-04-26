@@ -20,6 +20,12 @@ namespace MamyCare.Mapping
                 .Map(dest => dest.Gender, src => src.gender)
                 .Map(dest => dest.BabyImageUrl, src => src.ProfilePicUrl);
 
+            config.NewConfig<Baby, GetBabyProfileResponse>()
+                .Map(dest => dest.name, src => src.BabyName)
+                .Map(dest => dest.BirthDate, src => src.BirthDate)
+                .Map(dest => dest.gender, src => src.gender)
+                .Map(dest => dest.imageurl, src => src.ProfilePicUrl);
+
         }
     }
 }

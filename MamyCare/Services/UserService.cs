@@ -3,6 +3,9 @@ using Mapster;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Options;
+using Azure;
+using MamyCare.Entities;
 
 namespace MamyCare.Services
 {
@@ -11,15 +14,19 @@ namespace MamyCare.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly string _baseUrl;
+
 
         public UserService(
             ApplicationDbContext context,
             UserManager<ApplicationUser> userManager,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment, IOptions<ServerSettings> options)
         {
             _userManager = userManager;
             _context = context;
             _webHostEnvironment = webHostEnvironment;
+            _baseUrl = options.Value.BaseUrl;
+
         }
 
         public async Task<Result<GetProfileResponse>> GetMotherProfile(int userid)
@@ -29,6 +36,7 @@ namespace MamyCare.Services
                 .Where(u => u.Id == userid)
                 .SingleOrDefaultAsync();
             var profile = user.Adapt<GetProfileResponse>();
+            profile.ImageUrl = $"{_baseUrl}{profile.ImageUrl}";
             return Result.Success(profile);
         }
 
@@ -130,6 +138,7 @@ namespace MamyCare.Services
             foreach (var b in mother!.Babies)
             {
                 if (b.id == BabyId)
+
                     continue;
 
                 b.IsActive = false;
@@ -183,5 +192,18 @@ namespace MamyCare.Services
 
             return Result.Success();
         }
+
+        public async Task<Result<GetBabyProfileResponse>> GetBabyProfile(int userid)
+        {
+            var mother = await _context.Mothers
+                .Include(m => m.Babies)
+                .FirstOrDefaultAsync(m => m.UserId == userid);
+
+            var baby = await _context.Babies.Where(b=>b.IsActive==true).FirstOrDefaultAsync();
+            var profile = baby.Adapt<GetBabyProfileResponse>();
+            profile.imageurl = $"{_baseUrl}{profile.imageurl}";
+            return Result.Success(profile);
+        }
+
     }
 }

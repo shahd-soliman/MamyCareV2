@@ -4,15 +4,19 @@ using MamyCare.Contracts.Hospitals;
 using MamyCare.Entities;
 using MamyCare.Errors;
 using Mapster;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
 namespace MamyCare.Services
 {
-    public class HospitalService(ApplicationDbContext context) : IHospitalService
+    public class HospitalService(ApplicationDbContext context, IOptions<ServerSettings> options) : IHospitalService
     {
         private readonly ApplicationDbContext _context = context;
+        private readonly string _baseUrl = options.Value.BaseUrl;
+
+
 
         public Task<List<GetHospitalsResponse>> GetAllFilteredHospitals()
         {
@@ -33,12 +37,16 @@ namespace MamyCare.Services
                .FirstOrDefaultAsync(x => x.UserId == userid);
 
             var hospitals = await _context.Hospitals.Include(x => x.Governorate).ToListAsync();
+           
             var hospitalResponse = hospitals.Adapt<List<GetHospitalsResponse>>();
             if (mother!.FavouriteHospitals != null)
 
                 foreach (var hospital in hospitalResponse)
-            {
-                foreach (var fav in mother.FavouriteHospitals)
+                {
+                    hospital.ImageUrl = $"{_baseUrl}{hospital.ImageUrl}";
+
+
+                    foreach (var fav in mother.FavouriteHospitals)
                 {
                     if (hospital.Id == fav.hospitalId)
                         hospital.IsFavourite = true;
@@ -58,7 +66,9 @@ namespace MamyCare.Services
             var hospitalResponse = hospitals.Adapt<List<GetHospitalsResponse>>();
                  foreach (var hospital in hospitalResponse)
             {
-                if(mother!.FavouriteHospitals != null)
+                hospital.ImageUrl = $"{_baseUrl}{hospital.ImageUrl}";
+
+                if (mother!.FavouriteHospitals != null)
                 foreach (var fav in mother.FavouriteHospitals)
                 {
                     if (hospital.Id == fav.hospitalId)
@@ -78,8 +88,9 @@ namespace MamyCare.Services
             var hospital = await _context.Hospitals.Include(x => x.Governorate).FirstOrDefaultAsync(x => x.Id == id);
             var hospitalResponse = hospital.Adapt<GetHospitalsResponse>();
             if (mother!.FavouriteHospitals != null)
+                hospitalResponse.ImageUrl = $"{_baseUrl}{hospital.ImageUrl}";
 
-                foreach (var fav in mother.FavouriteHospitals)
+            foreach (var fav in mother.FavouriteHospitals)
             {
                 if (hospital.Id == fav.hospitalId)
                     hospitalResponse.IsFavourite = true;
@@ -126,7 +137,10 @@ namespace MamyCare.Services
             var mother = await _context.Mothers.FirstOrDefaultAsync(x => x.UserId == userId);
             var Favs = await _context.FavouriteHospitals.Where(x => x.motherId == mother!.Id).Include(x=>x.Hospital).ToListAsync();
             var response= Favs.Adapt <List<GetHospitalsResponse>>();
-
+            foreach (var fav in response)
+            {
+                fav.ImageUrl = $"{_baseUrl}{fav.ImageUrl}";
+            }
             return Result.Success(response);
 
         }

@@ -76,6 +76,17 @@ public class AccountController(IUserService userService) : ControllerBase
         var result = await _userService.UpdateBaby(id, request, cancellationToken);
         return result.IsSuccess ? NoContent() : result.ToProblem(400);
     }
+
+    [HttpGet("GetBabyProfile")]
+    public async Task<IActionResult> GetBabyProfile()
+    {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        var id = int.Parse(userIdString!);
+        var result = await _userService.GetBabyProfile(id);
+
+        return Ok(result.Value);
+    }
 }
 
 

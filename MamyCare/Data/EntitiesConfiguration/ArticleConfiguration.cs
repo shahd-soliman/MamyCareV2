@@ -7,7 +7,7 @@ namespace MamyCare.Data.EntitiesConfiguration
         public void Configure(EntityTypeBuilder<Article> builder)
         {
             builder.HasKey(a => a.Id);
-            builder.Property(a => a.Description).IsRequired().HasMaxLength(1000);
+            builder.Property(a => a.Description).IsRequired().HasMaxLength(10000);
         }
     }
  

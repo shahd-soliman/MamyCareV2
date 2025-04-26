@@ -1,9 +1,13 @@
 ﻿namespace MamyCare.Contracts.BabyFeature
 {
-    public record ActivityResponse(
-     string? title ,
-     string? content ,
-     string? imageUrl 
-);
+    public class ActivityResponse
+    {
+        public string? title { get; set; }
+        public string? content { get; set; }
+        public string? imageUrl { get; set; }
+
+    }
+
+
    
 }

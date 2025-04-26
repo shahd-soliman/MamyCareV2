@@ -1,13 +1,14 @@
 ﻿namespace MamyCare.Contracts.User
 {
-    public record GetProfileResponse
-    (
-        string FullName,
-        string Email,
-        string? ImageUrl
-    );
-}
-  
+    public class GetProfileResponse
+    {
+        public string FullName { get; set; }
+        public string Email { get; set; }
+        public string? ImageUrl { get; set; }
+    }
+    }
+
+
 
 
     
