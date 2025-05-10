@@ -68,12 +68,31 @@ namespace MamyCare.DataSeed
                     }
                 }
 
+
+            }
+            if (!context.Activities.Any())
+            {
+                var ActivitiesData = File.ReadAllText("DataSeed/Activites.json");
+                var activities = JsonSerializer.Deserialize<List<Activity>>(ActivitiesData);
+                if (activities?.Count > 0)
+                {
+                    foreach (var item in activities)
+                    {
+                        context.Activities.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
             }
         }
-
-
-
     }
 }
+    
+
+
+
+
+    
+
 
 
