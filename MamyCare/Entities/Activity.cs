@@ -6,6 +6,8 @@
         public string? title { get; set; }
         public string? content { get; set; }
         public string? imageUrl { get; set; }
+        public bool IsArabic { get; set; } = true;
+
 
 
     }

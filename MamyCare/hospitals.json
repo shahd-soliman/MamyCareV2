@@ -1,0 +1,272 @@
+[
+  {
+    "Title": "Kasr Al Ainy Hospital",
+    "Description": "Leading teaching hospital in Egypt.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Kasr Al Ainy Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 1,
+    "Phone": null
+  },
+  {
+    "Title": "Sheikh Zayed Specialized Hospital",
+    "Description": "Modern hospital with specialized care.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Sheikh Zayed Specialized Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 2,
+    "Phone": null
+  },
+  {
+    "Title": "Alexandria University Hospital",
+    "Description": "Comprehensive healthcare in Alexandria.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Alexandria University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 3,
+    "Phone": null
+  },
+  {
+    "Title": "Benha University Hospital",
+    "Description": "Specialized medical services in Qalyubia.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Benha University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 4,
+    "Phone": null
+  },
+  {
+    "Title": "Port Said General Hospital",
+    "Description": "Central hospital for Port Said residents.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Port Said General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 5,
+    "Phone": null
+  },
+  {
+    "Title": "Suez Canal Authority Hospital",
+    "Description": "Trusted healthcare for Suez area.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Suez Canal Authority Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 6,
+    "Phone": null
+  },
+  {
+    "Title": "Mansoura University Hospital",
+    "Description": "Leading hospital in Dakahlia.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Mansoura University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 7,
+    "Phone": null
+  },
+  {
+    "Title": "Zagazig General Hospital",
+    "Description": "Major healthcare center in Sharqia.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Zagazig General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 8,
+    "Phone": null
+  },
+  {
+    "Title": "Damanhur Medical Center",
+    "Description": "Serving Beheira with advanced care.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Damanhur Medical Center.png",
+    "Isopened": true,
+    "GovernorateId": 9,
+    "Phone": null
+  },
+  {
+    "Title": "Minya University Hospital",
+    "Description": "Top hospital in Upper Egypt.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Minya University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 10,
+    "Phone": null
+  },
+  {
+    "Title": "Minufiya University Hospital",
+    "Description": "Offering specialized services in Minufia.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Minufiya University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 11,
+    "Phone": null
+  },
+  {
+    "Title": "Assiut University Hospital",
+    "Description": "A well-known hospital in Upper Egypt.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Assiut University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 12,
+    "Phone": null
+  },
+  {
+    "Title": "Beni Suef University Hospital",
+    "Description": "Advanced medical care in Beni Suef.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Beni Suef University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 13,
+    "Phone": null
+  },
+  {
+    "Title": "Fayoum General Hospital",
+    "Description": "A primary healthcare center in Fayoum.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Fayoum General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 14,
+    "Phone": null
+  },
+  {
+    "Title": "Sohag University Hospital",
+    "Description": "Providing quality healthcare in Sohag.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Sohag University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 15,
+    "Phone": null
+  },
+  {
+    "Title": "Qena General Hospital",
+    "Description": "A major healthcare provider in Qena.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Qena General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 16,
+    "Phone": null
+  },
+  {
+    "Title": "Aswan University Hospital",
+    "Description": "Highly trusted hospital in Aswan.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Aswan University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 17,
+    "Phone": null
+  },
+  {
+    "Title": "Luxor General Hospital",
+    "Description": "Serving Luxor with top healthcare.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Luxor General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 18,
+    "Phone": null
+  },
+  {
+    "Title": "Hurghada Hospital",
+    "Description": "A central hospital in the Red Sea area.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Hurghada Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 19,
+    "Phone": null
+  },
+  {
+    "Title": "New Valley General Hospital",
+    "Description": "Main healthcare center in the New Valley.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/New Valley General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 20,
+    "Phone": null
+  },
+  {
+    "Title": "Matrouh General Hospital",
+    "Description": "Providing quality healthcare in Matrouh.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Matrouh General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 21,
+    "Phone": null
+  },
+  {
+    "Title": "Arish General Hospital",
+    "Description": "Healthcare services in North Sinai.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Arish General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 22,
+    "Phone": null
+  },
+  {
+    "Title": "Sharm El Sheikh International Hospital",
+    "Description": "A modern healthcare center in South Sinai.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Sharm El Sheikh International Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 23,
+    "Phone": null
+  },
+  {
+    "Title": "Damietta General Hospital",
+    "Description": "Main hospital in Damietta for all specialties.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Damietta General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 24,
+    "Phone": null
+  },
+  {
+    "Title": "Ismailia General Hospital",
+    "Description": "A vital healthcare provider in Ismailia.",
+    "Rate": 4,
+    "ImageUrl": "Hospitals/Ismailia General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 25,
+    "Phone": null
+  },
+  {
+    "Title": "Kafr El Sheikh General Hospital",
+    "Description": "A healthcare hub in Kafr El Sheikh.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Kafr El Sheikh General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 26,
+    "Phone": null
+  },
+  {
+    "Title": "Tanta University Hospital",
+    "Description": "Offering advanced medical services in Gharbia.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/Tanta University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 27,
+    "Phone": null
+  },
+  {
+    "Title": "El Wadi El Gedid General Hospital",
+    "Description": "Healthcare services in the Wadi El Gedid area.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/El Wadi El Gedid General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 28,
+    "Phone": null
+  },
+  {
+    "Title": "Helwan General Hospital",
+    "Description": "A central healthcare facility in Helwan.",
+    "Rate": 3,
+    "ImageUrl": "Hospitals/Helwan General Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 29,
+    "Phone": null
+  },
+  {
+    "Title": "6th of October University Hospital",
+    "Description": "Top-rated hospital in the 6th of October area.",
+    "Rate": 5,
+    "ImageUrl": "Hospitals/6th of October University Hospital.png",
+    "Isopened": true,
+    "GovernorateId": 30,
+    "Phone": null
+  }
+]

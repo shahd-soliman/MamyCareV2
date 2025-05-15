@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\BabyMemoriesImages\**" />
+    <Content Remove="wwwroot\BabyMemoriesImages\**" />
+    <EmbeddedResource Remove="wwwroot\BabyMemoriesImages\**" />
+    <None Remove="wwwroot\BabyMemoriesImages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="MailKit" Version="4.10.0" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
@@ -28,8 +35,39 @@
     <Folder Include="Data\Migrations\" />
     <Folder Include="wwwroot\MotherProfilePicture\" />
     <Folder Include="wwwroot\BabyProfilePicture\" />
-    <Folder Include="wwwroot\BabyMemoriesImages\" />
-    <Folder Include="wwwroot\Activities\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Hospitals\6thofOctoberUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\AlexandriaUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\ArishGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\AssiutUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\AswanUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\BenhaUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\BeniSuefUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\DamanhurMediclCenter.png" />
+    <None Include="wwwroot\Hospitals\DamiettaGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\ElWadiElGedidGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\FayoumGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\HelwanGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\HurghadaHospital.png" />
+    <None Include="wwwroot\Hospitals\IsmailiaGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\KafrElSheikhGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\KasrAlAinyHospital.png" />
+    <None Include="wwwroot\Hospitals\LuxorGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\MansouraUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\MatrouhGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\MinufiyaUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\MinyaUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\NewValleyGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\PortSaidGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\QenaGeneralHospital.png" />
+    <None Include="wwwroot\Hospitals\SharmElSheikhInternationalHospital.png" />
+    <None Include="wwwroot\Hospitals\SheikhZayedSpecializedHospital.png" />
+    <None Include="wwwroot\Hospitals\SohagUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\SuezCanalAuthorityHospital.png" />
+    <None Include="wwwroot\Hospitals\TantaUniversityHospital.png" />
+    <None Include="wwwroot\Hospitals\ZagazigGeneralHospital.png" />
   </ItemGroup>
 
 </Project>

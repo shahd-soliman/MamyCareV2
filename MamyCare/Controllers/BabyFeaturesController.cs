@@ -8,17 +8,27 @@ using Microsoft.AspNetCore.Mvc;
 namespace MamyCare.Controllers
 {
     [Authorize]
-    [Route("/")]
+    [Route("/BabyFeatures")]
     [ApiController]
     public class BabyFeaturesController(IBabyFeaturesService BabyFeaturesService  ) : ControllerBase
     {
         private readonly IBabyFeaturesService _babyFeaturesService = BabyFeaturesService;
 
         //Activiteis
-        [HttpGet("Activites")]
-        public async Task<ActionResult<List<ActivityResponse>>> GetAllActivities()
+        [HttpGet("ArabicActivites")]
+        public async Task<ActionResult<List<ActivityResponse>>> ArabicActivites()
         {
-            var activities = await _babyFeaturesService.ActivitiesGetAll();
+            var activities = await _babyFeaturesService.ArabicActivitiesGetAll();
+            if (activities == null || activities.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(activities);
+        }
+        [HttpGet("EnglishActivites")]
+        public async Task<ActionResult<List<ActivityResponse>>> EnglishActivites()
+        {
+            var activities = await _babyFeaturesService.EnglishActivitiesGetAll();
             if (activities == null || activities.Count == 0)
             {
                 return BadRequest();

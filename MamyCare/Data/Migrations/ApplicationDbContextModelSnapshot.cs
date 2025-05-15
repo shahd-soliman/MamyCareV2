@@ -30,6 +30,9 @@ namespace MamyCare.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<bool>("IsArabic")
+                        .HasColumnType("bit");
+
                     b.Property<string>("content")
                         .HasColumnType("nvarchar(max)");
 
@@ -131,6 +134,9 @@ namespace MamyCare.Data.Migrations
                     b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsArabic")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -334,6 +340,37 @@ namespace MamyCare.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Mothers");
+                });
+
+            modelBuilder.Entity("MamyCare.Entities.Podcast", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsArabic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URL")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Podcasts");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.Recipe", b =>

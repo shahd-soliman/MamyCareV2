@@ -56,7 +56,7 @@ namespace MamyCare.DataSeed
             }
             if (!context.Articles.Any())
             {
-                var ArticlesData = File.ReadAllText("DataSeed/Articles.json");
+                var ArticlesData = File.ReadAllText("DataSeed/English-Articles.json");
                 var articles = JsonSerializer.Deserialize<List<Article>>(ArticlesData);
                 if (articles?.Count > 0)
                 {
@@ -68,12 +68,64 @@ namespace MamyCare.DataSeed
                     }
                 }
 
+
             }
+            if (!context.Activities.Any())
+            {
+                var ActivitiesData = File.ReadAllText("DataSeed/Activites.json");
+                var activities = JsonSerializer.Deserialize<List<Activity>>(ActivitiesData);
+                if (activities?.Count > 0)
+                {
+                    foreach (var item in activities)
+                    {
+                        context.Activities.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+            }
+            if (!context.Podcasts.Any())
+            {
+                var PodcastsData = File.ReadAllText("DataSeed/English-podcasts.json");
+                var Podcasts = JsonSerializer.Deserialize<List<Podcast>>(PodcastsData);
+                if (Podcasts?.Count > 0)
+                {
+                    foreach (var item in Podcasts)
+                    {
+                        context.Podcasts.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+            }
+            if (!context.Articles.Any())
+            {
+                var ArabicArticlesData = File.ReadAllText("DataSeed/Arabic-Articles.json");
+                var Arabicarticles = JsonSerializer.Deserialize<List<Article>>(ArabicArticlesData);
+                if (Arabicarticles?.Count > 0)
+                {
+                    foreach (var item in Arabicarticles)
+                    {
+                        context.Articles.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+
+
+            }
+
+
         }
-
-
-
     }
-}
+    }
+
+    
+
+
+
+
+    
+
 
 

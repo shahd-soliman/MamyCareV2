@@ -17,5 +17,7 @@ namespace MamyCare.Entities
         public DateTime CreatedAt { get; set; }
 
         public string ImageUrl { get; set; }
+        public bool IsArabic { get; set; } = false;
+
     }
 }

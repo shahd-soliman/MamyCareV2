@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Tummy Time",
+    "content": "Lay a soft blanket on the floor. Place your baby on their stomach for 2-3 minutes, 2-3 times a day. Stay close and talk to them or place a toy to encourage head lifting.",
+    "imageUrl": "Activities/Tummy Time.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Sing a Lullaby",
+    "content": "Hold your baby and sing a gentle lullaby like 'Twinkle, Twinkle' in a soft voice, rocking them for 5-10 minutes.",
+    "imageUrl": "Activities/Sing a Lullaby.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Mirror Play",
+    "content": "Use a baby-safe mirror and place it 8-12 inches from your baby’s face during tummy time or while holding them.",
+    "imageUrl": "Activities/Mirror Play.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Gentle Leg Cycling",
+    "content": "Lay your baby on their back and gently move their legs in a circular pedaling motion for 1-2 minutes.",
+    "imageUrl": "Activities/Gentle Leg Cycling.png",
+    "IsArabic": false
+  },
+  {
+    "title": "High-Contrast Cards",
+    "content": "Show black-and-white or bold-colored cards 8-12 inches from your baby’s face, switching between cards every 10-20 seconds.",
+    "imageUrl": "Activities/High-Contrast Cards.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Peek-a-Boo",
+    "content": "Cover your face with hands or a cloth, then reveal it and say 'Peek-a-boo!' Repeat several times as your baby giggles.",
+    "imageUrl": "Activities/Peek-a-Boo.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Texture Exploration",
+    "content": "Let your baby touch different safe textures like a scarf, rubber ball, and wooden spoon. Name each item as they explore.",
+    "imageUrl": "Activities/Texture Exploration.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Rattle Play",
+    "content": "Shake a lightweight rattle to get your baby’s attention, then place it in their hand or let them reach for it.",
+    "imageUrl": "Activities/Rattle Play.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Stacking Cups",
+    "content": "Give your baby 3-5 plastic cups to stack or nest. Let them explore and knock them over for fun learning.",
+    "imageUrl": "Activities/Stacking Cups.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Baby Dance",
+    "content": "Hold your baby and gently sway or bounce to soft music for 5-10 minutes to encourage rhythm and bonding.",
+    "imageUrl": "Activities/Baby Dance.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Block Building",
+    "content": "Sit with your child and stack soft or wooden blocks into towers. Let them knock them down and try building.",
+    "imageUrl": "Activities/Block Building.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Ball Rolling",
+    "content": "Roll a soft ball back and forth between you and your child. Great for motor skills and social fun.",
+    "imageUrl": "Activities/Ball Rolling.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Finger Painting",
+    "content": "Let your child explore non-toxic finger paint on paper. Encourage them to smear colors and be creative.",
+    "imageUrl": "Activities/Finger Painting.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Story Time",
+    "content": "Read a short picture book with your child. Point to pictures and make fun animal sounds to keep them engaged.",
+    "imageUrl": "Activities/Story Time.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Hide and Seek Toy",
+    "content": "Hide a small toy under a blanket and ask your child to find it. Repeat a few times to build problem-solving.",
+    "imageUrl": "Activities/Hide and Seek Toy.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Simon Says",
+    "content": "Play 'Simon Says' with simple actions like clapping or touching your nose. Helps with listening and following instructions.",
+    "imageUrl": "Activities/Simon Says.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Obstacle Course",
+    "content": "Create a mini course with cushions and tape. Let your child crawl, climb, and balance through it.",
+    "imageUrl": "Activities/Obstacle Course.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Sorting Shapes",
+    "content": "Let your child sort different shaped or colored toys into bowls. Teaches matching, sorting, and motor skills.",
+    "imageUrl": "Activities/Sorting Shapes.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Pretend Play Kitchen",
+    "content": "Use a toy kitchen or safe utensils to pretend-cook with your child. Stir, pour, and 'taste' food together.",
+    "imageUrl": "Activities/Pretend Play Kitchen.png",
+    "IsArabic": false
+  },
+  {
+    "title": "Singing Action Songs",
+    "content": "Sing songs like 'Head, Shoulders, Knees, and Toes' and do the actions with your child. Repeat several times.",
+    "imageUrl": "Activities/Singing Action Songs.png",
+    "IsArabic": false
+  }
+]

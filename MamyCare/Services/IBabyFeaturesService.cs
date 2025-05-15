@@ -4,7 +4,9 @@ namespace MamyCare.Services
 {
     public interface IBabyFeaturesService
     {
-        Task<List<ActivityResponse>> ActivitiesGetAll();
+        Task<List<ActivityResponse>> ArabicActivitiesGetAll();
+        Task<List<ActivityResponse>> EnglishActivitiesGetAll();
+
 
         Task<ActivityResponse> ActivityGetById(int activityid);
         Task<List<RecipeResponse>> RecipesGetAll();

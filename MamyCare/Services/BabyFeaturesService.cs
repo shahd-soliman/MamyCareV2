@@ -11,9 +11,9 @@ namespace MamyCare.Services
         private readonly string _baseUrl = options.Value.BaseUrl;
 
 
-        public async Task<List<ActivityResponse>> ActivitiesGetAll()
+        public async Task<List<ActivityResponse>> ArabicActivitiesGetAll()
         {
-            var activities = await _context.Activities.ToListAsync();
+            var activities = await _context.Activities.Where(x=>x.IsArabic==true).ToListAsync();
             var response = activities.Adapt<List<ActivityResponse>>();
 
             foreach (var activity in response)
@@ -55,5 +55,20 @@ namespace MamyCare.Services
 
         }
 
+       
+        public async Task<List<ActivityResponse>> EnglishActivitiesGetAll()
+        {
+        
+            var activities = await _context.Activities.Where(x => x.IsArabic==false).ToListAsync();
+            var response = activities.Adapt<List<ActivityResponse>>();
+
+            foreach (var activity in response)
+            {
+                activity.imageUrl = $"{_baseUrl}{activity.imageUrl}";
+            }
+
+            return response;
+        
     }
+}
 }
