@@ -69,23 +69,6 @@ namespace MamyCare.DataSeed
                 }
 
 
-<<<<<<< HEAD
-=======
-            }
-            if (!context.Activities.Any())
-            {
-                var ActivitiesData = File.ReadAllText("DataSeed/Activites.json");
-                var activities = JsonSerializer.Deserialize<List<Activity>>(ActivitiesData);
-                if (activities?.Count > 0)
-                {
-                    foreach (var item in activities)
-                    {
-                        context.Activities.Add(item);
-
-                        await context.SaveChangesAsync();
-                    }
-                }
->>>>>>> 81d66d6021334467f5baffc827492da58b7a6fbf
             }
             if (!context.Activities.Any())
             {
@@ -135,12 +118,8 @@ namespace MamyCare.DataSeed
 
         }
     }
-<<<<<<< HEAD
     }
 
-=======
-}
->>>>>>> 81d66d6021334467f5baffc827492da58b7a6fbf
     
 
 
