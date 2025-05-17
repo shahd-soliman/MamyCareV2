@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Options;
 using Azure;
 using MamyCare.Entities;
+using MamyCare.Contracts.Authentication;
 
 namespace MamyCare.Services
 {
@@ -137,7 +138,7 @@ namespace MamyCare.Services
             return Result.Success();
         }
 
-        public async Task<Result<Baby>> ChooseBaby(int UserId, int BabyId)
+        public async Task<Result<chooseBabyResponse>> ChooseBaby(int UserId, int BabyId)
         {
             var mother = await _context.Mothers
                 .Include(m => m.Babies)
@@ -157,8 +158,11 @@ namespace MamyCare.Services
             }
 
             await _context.SaveChangesAsync();
+            var response = baby.Adapt<chooseBabyResponse>();
+            if(response.BabyImageUrl != null)
+                response.BabyImageUrl = $"{_baseUrl}{response.BabyImageUrl}";
 
-            return Result.Success(baby);
+            return Result.Success(response);
         }
 
         public async Task<Result> UpdateBaby(int UserId, UpdateBabyProfileRequest request, CancellationToken cancellationToken)
