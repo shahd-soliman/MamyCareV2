@@ -2,7 +2,9 @@
 using MamyCare.abstraction;
 using MamyCare.Contracts.Authentication;
 using MamyCare.Helpers;
+using Mapster;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Options;
 using System.Text;
 using System.Web;
 
@@ -17,6 +19,7 @@ namespace MamyCare.Services
         private readonly IEmailSender _emailService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly string _baseUrl;
 
         public AuthService(
             UserManager<ApplicationUser> userManager,
@@ -25,7 +28,8 @@ namespace MamyCare.Services
             ILogger<AuthService> logger,
             IEmailSender emailSender,
             IHttpContextAccessor httpContextAccessor,
-            IWebHostEnvironment webHostEnvironment)
+            IWebHostEnvironment webHostEnvironment,
+            IOptions<ServerSettings> options)
         {
             _userManager = userManager;
             _context = context;
@@ -34,7 +38,9 @@ namespace MamyCare.Services
             _emailService = emailSender;
             _httpContextAccessor = httpContextAccessor;
             _webHostEnvironment = webHostEnvironment;
+            _baseUrl = options.Value.BaseUrl;
         }
+
 
         public async Task<Result<AuthResponse>> Register(RequestRegister request, CancellationToken cancellationToken)
         {
@@ -77,9 +83,7 @@ namespace MamyCare.Services
                     MotherImageUrl = Path.Combine("MotherProfilePicture", imageName).Replace("\\", "/");
 
                     var fileExists = System.IO.File.Exists(path);
-                    Console.WriteLine($"File created successfully: {fileExists}");
-                    Console.WriteLine($"WebRootPath: {_webHostEnvironment.WebRootPath}");
-                    Console.WriteLine($"ContentRootPath: {_webHostEnvironment.ContentRootPath}");
+                    
                 }
 
                 if (request.BabyImage is not null)
@@ -138,7 +142,15 @@ namespace MamyCare.Services
                 mother = await _context.Mothers
                     .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
                     .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
-                var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, mother.Babies, mother.ImageUrl);
+                
+                var Babiesresponse =mother!.Babies.Adapt<List<BabyResponse>>();
+                foreach (var item in Babiesresponse)
+                {
+                    item.imageurl= $"{_baseUrl}{item.imageurl}";
+                }
+
+                var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
+              
                 return Result<AuthResponse>.Success(response);
             }
             catch (Exception ex)
@@ -169,7 +181,14 @@ namespace MamyCare.Services
                 .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
                 .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
 
-            var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, mother.Babies, mother.ImageUrl);
+            var Babiesresponse = mother!.Babies.Adapt<List<BabyResponse>>();
+            foreach (var item in Babiesresponse)
+            {
+                item.imageurl= $"{_baseUrl}{item.imageurl}";
+            }
+
+
+            var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
             return Result<AuthResponse>.Success(response);
         }
 
