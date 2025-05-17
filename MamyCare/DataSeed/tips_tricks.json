@@ -1,0 +1,622 @@
+[
+  {
+    "Title": "Baby Sleep Tips",
+    "ImagePath": "TipsAndTricks/baby sleep.png",
+    "Tips": [
+      {
+        "Title": "Create a Sleep Routine",
+        "Points": [
+          { "Description": "Put your baby to sleep at the same time daily." },
+          { "Description": "Use calming activities like reading or lullabies." }
+        ]
+      },
+      {
+        "Title": "Set the Environment",
+        "Points": [
+          { "Description": "Keep the room dark and quiet." },
+          { "Description": "Maintain a comfortable temperature." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Breastfeeding Essentials",
+    "ImagePath": "TipsAndTricks/Breastfeeding Essentials.png",
+    "Tips": [
+      {
+        "Title": "Feeding Techniques",
+        "Points": [
+          { "Description": "Ensure a good latch to avoid discomfort." },
+          { "Description": "Alternate breasts each feeding session." }
+        ]
+      },
+      {
+        "Title": "Mother’s Comfort",
+        "Points": [
+          { "Description": "Sit in a comfortable chair with back support." },
+          { "Description": "Drink water and eat snacks to stay energized." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Soothing a Crying Baby",
+    "ImagePath": "TipsAndTricks/Soothing a Crying Baby.png",
+    "Tips": [
+      {
+        "Title": "Gentle Motions",
+        "Points": [
+          { "Description": "Rock the baby slowly or walk around." },
+          { "Description": "Try using a baby swing or carrier." }
+        ]
+      },
+      {
+        "Title": "Check for Common Needs",
+        "Points": [
+          { "Description": "Is the diaper wet or the baby hungry?" },
+          { "Description": "Is your baby feeling too hot or cold?" }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Tummy Time Tips",
+    "ImagePath": "TipsAndTricks/Tummy Time Tips.png",
+    "Tips": [
+      {
+        "Title": "Make It Fun",
+        "Points": [
+          { "Description": "Place colorful toys within baby's reach." },
+          { "Description": "Lie down in front of them and talk." }
+        ]
+      },
+      {
+        "Title": "Timing It Right",
+        "Points": [
+          { "Description": "Do tummy time after naps or diaper changes." },
+          { "Description": "Start with short sessions (2–3 mins)." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Healthy Snacks for Moms",
+    "ImagePath": "TipsAndTricks/Healthy Snacks for Moms.png",
+    "Tips": [
+      {
+        "Title": "Quick Options",
+        "Points": [
+          { "Description": "Keep nuts, fruits, and granola bars nearby." },
+          { "Description": "Prepare snack boxes in advance." }
+        ]
+      },
+      {
+        "Title": "Stay Hydrated",
+        "Points": [
+          { "Description": "Always keep a water bottle with you." },
+          { "Description": "Drink herbal teas to relax and refresh." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Diaper Changing Tips",
+    "ImagePath": "TipsAndTricks/Diaper Changing Tips.png",
+    "Tips": [
+      {
+        "Title": "Preparation First",
+        "Points": [
+          { "Description": "Always keep wipes, clean diapers, and cream within reach." },
+          { "Description": "Use a changing mat to protect surfaces." }
+        ]
+      },
+      {
+        "Title": "Keep Baby Comfortable",
+        "Points": [
+          { "Description": "Talk to your baby to keep them calm during the change." },
+          { "Description": "Use fragrance-free wipes for sensitive skin." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Bonding with Your Baby",
+    "ImagePath": "TipsAndTricks/Bonding with Your Baby.png",
+    "Tips": [
+      {
+        "Title": "Skin-to-Skin Contact",
+        "Points": [
+          { "Description": "Hold your baby on your bare chest to enhance bonding." },
+          { "Description": "Do this after feeding or before naps." }
+        ]
+      },
+      {
+        "Title": "Eye Contact & Talking",
+        "Points": [
+          { "Description": "Look into your baby's eyes and talk gently to them." },
+          { "Description": "Mimic their sounds and facial expressions." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Bathing Your Baby",
+    "ImagePath": "TipsAndTricks/Bathing Your Baby.png",
+    "Tips": [
+      {
+        "Title": "Safe Setup",
+        "Points": [
+          { "Description": "Use a baby tub with warm, not hot, water." },
+          { "Description": "Test the water with your elbow before placing the baby." }
+        ]
+      },
+      {
+        "Title": "Comfort & Fun",
+        "Points": [
+          { "Description": "Use soft sponges and sing or talk during bath time." },
+          { "Description": "Wrap the baby in a soft towel immediately afterward." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Encouraging Baby Movement",
+    "ImagePath": "TipsAndTricks/Encouraging Baby Movement.png",
+    "Tips": [
+      {
+        "Title": "Play on the Floor",
+        "Points": [
+          { "Description": "Let your baby kick freely without blankets or tight clothes." },
+          { "Description": "Use colorful toys to encourage reaching and crawling." }
+        ]
+      },
+      {
+        "Title": "Change Positions Often",
+        "Points": [
+          { "Description": "Alternate between tummy time, back, and supported sitting." },
+          { "Description": "This helps build strength and coordination." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Postpartum Recovery Tips",
+    "ImagePath": "TipsAndTricks/Postpartum Recovery Tips.png",
+    "Tips": [
+      {
+        "Title": "Rest & Nourishment",
+        "Points": [
+          { "Description": "Sleep when the baby sleeps to help recovery." },
+          { "Description": "Eat balanced meals rich in protein and fiber." }
+        ]
+      },
+      {
+        "Title": "Emotional Support",
+        "Points": [
+          { "Description": "Talk about your feelings with trusted friends or family." },
+          { "Description": "Seek help if you feel overwhelmed or anxious." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Starting Solid Foods",
+    "ImagePath": "TipsAndTricks/Starting Solid Foods.png",
+    "Tips": [
+      {
+        "Title": "When to Start",
+        "Points": [
+          { "Description": "Begin around 6 months after consulting your doctor." },
+          { "Description": "Look for readiness signs like sitting up with support." }
+        ]
+      },
+      {
+        "Title": "Safe Introduction",
+        "Points": [
+          { "Description": "Start with single-ingredient purees." },
+          { "Description": "Wait 3–5 days before introducing a new food." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Babyproofing Your Home",
+    "ImagePath": "TipsAndTricks/Babyproofing Your Home.png",
+    "Tips": [
+      {
+        "Title": "Basic Safety Steps",
+        "Points": [
+          { "Description": "Cover outlets and secure sharp edges." },
+          { "Description": "Install gates near stairs and slippery areas." }
+        ]
+      },
+      {
+        "Title": "Hazard Removal",
+        "Points": [
+          { "Description": "Keep cleaning products and medicine out of reach." },
+          { "Description": "Anchor furniture that could tip over." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Mom’s Mental Health",
+    "ImagePath": "TipsAndTricks/Mom’s Mental Health.png",
+    "Tips": [
+      {
+        "Title": "Take Care of You",
+        "Points": [
+          { "Description": "Accept help from others — you don’t have to do it all." },
+          { "Description": "Take 10–15 minutes daily to relax or meditate." }
+        ]
+      },
+      {
+        "Title": "Seek Support",
+        "Points": [
+          { "Description": "Join a mom support group or talk to a professional." },
+          { "Description": "Journaling your feelings can also help." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Teething Tips",
+    "ImagePath": "TipsAndTricks/Teething Tips.png",
+    "Tips": [
+      {
+        "Title": "Soothe the Pain",
+        "Points": [
+          { "Description": "Use a cold teething ring or wet cloth." },
+          { "Description": "Gently massage your baby’s gums." }
+        ]
+      },
+      {
+        "Title": "Monitor for Symptoms",
+        "Points": [
+          { "Description": "Look for drooling, fussiness, and chewing behaviors." },
+          { "Description": "Call the doctor if there's a fever." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Introducing a Bottle",
+    "ImagePath": "TipsAndTricks/Introducing a Bottle.png",
+    "Tips": [
+      {
+        "Title": "Make it Comfortable",
+        "Points": [
+          { "Description": "Have someone else offer the bottle first if breastfeeding." },
+          { "Description": "Hold baby upright and close." }
+        ]
+      },
+      {
+        "Title": "Check the Flow",
+        "Points": [
+          { "Description": "Use slow-flow nipples for newborns." },
+          { "Description": "Warm the milk slightly to body temperature." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Managing Baby’s Fever",
+    "ImagePath": "TipsAndTricks/Managing Baby’s Fever.png",
+    "Tips": [
+      {
+        "Title": "Monitor Temperature",
+        "Points": [
+          { "Description": "Use a digital thermometer under the arm." },
+          { "Description": "Seek medical help if under 3 months with fever." }
+        ]
+      },
+      {
+        "Title": "Keep Baby Comfortable",
+        "Points": [
+          { "Description": "Dress baby in light clothes." },
+          { "Description": "Keep them hydrated with breastmilk or formula." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Naptime Strategies",
+    "ImagePath": "TipsAndTricks/Naptime Strategies.png",
+    "Tips": [
+      {
+        "Title": "Watch for Sleep Cues",
+        "Points": [
+          { "Description": "Look for rubbing eyes, yawning, or fussiness." },
+          { "Description": "Put baby down before overtired." }
+        ]
+      },
+      {
+        "Title": "Stay Consistent",
+        "Points": [
+          { "Description": "Use a short nap routine with quiet time." },
+          { "Description": "Try to nap in the same place daily." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Going Outside with Baby",
+    "ImagePath": "TipsAndTricks/Going Outside with Baby.png",
+    "Tips": [
+      {
+        "Title": "Weather Prep",
+        "Points": [
+          { "Description": "Dress baby appropriately for the weather." },
+          { "Description": "Use sunshades and sunscreen (6+ months)." }
+        ]
+      },
+      {
+        "Title": "Stay Safe",
+        "Points": [
+          { "Description": "Avoid crowded places and noisy traffic." },
+          { "Description": "Keep baby hydrated and shaded." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Reading to Your Baby",
+    "ImagePath": "TipsAndTricks/Reading to Your Baby.png",
+    "Tips": [
+      {
+        "Title": "Make it Fun",
+        "Points": [
+          { "Description": "Use voices and expressions while reading." },
+          { "Description": "Let baby look at colorful pictures." }
+        ]
+      },
+      {
+        "Title": "Start Early",
+        "Points": [
+          { "Description": "Reading daily builds language and bonding." },
+          { "Description": "Even short sessions are valuable." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Organizing Baby Gear",
+    "ImagePath": "TipsAndTricks/Organizing Baby Gear.png",
+    "Tips": [
+      {
+        "Title": "Keep Essentials Handy",
+        "Points": [
+          { "Description": "Use baskets or caddies for diapers, wipes, clothes." },
+          { "Description": "Store items in rooms you use most." }
+        ]
+      },
+      {
+        "Title": "Declutter Weekly",
+        "Points": [
+          { "Description": "Remove outgrown clothes and unused items." },
+          { "Description": "Donate or store items not in use." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Dealing with Colic",
+    "ImagePath": "TipsAndTricks/Dealing with Colic.png",
+    "Tips": [
+      {
+        "Title": "Comfort Techniques",
+        "Points": [
+          { "Description": "Try swaddling, rocking, or white noise." },
+          { "Description": "Hold baby upright after feeding." }
+        ]
+      },
+      {
+        "Title": "Get Support",
+        "Points": [
+          { "Description": "Take breaks and ask for help when needed." },
+          { "Description": "Consult a pediatrician to rule out medical issues." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Preparing for Doctor Visits",
+    "ImagePath": "TipsAndTricks/Preparing for Doctor Visits.png",
+    "Tips": [
+      {
+        "Title": "Keep Records",
+        "Points": [
+          { "Description": "Track vaccines and growth milestones." },
+          { "Description": "Write questions beforehand." }
+        ]
+      },
+      {
+        "Title": "Bring Comfort Items",
+        "Points": [
+          { "Description": "Carry a toy or pacifier to soothe baby." },
+          { "Description": "Pack an extra diaper and change of clothes." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Handling Baby Milestones",
+    "ImagePath": "TipsAndTricks/Handling Baby Milestones.png",
+    "Tips": [
+      {
+        "Title": "Know the Signs",
+        "Points": [
+          { "Description": "Watch for smiling, rolling, sitting, crawling." },
+          { "Description": "Every baby develops at their own pace." }
+        ]
+      },
+      {
+        "Title": "Encourage Gently",
+        "Points": [
+          { "Description": "Provide toys and activities that promote movement." },
+          { "Description": "Celebrate small progress steps." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Returning to Work",
+    "ImagePath": "TipsAndTricks/Returning to Work.png",
+    "Tips": [
+      {
+        "Title": "Plan Ahead",
+        "Points": [
+          { "Description": "Introduce your baby to caregivers gradually." },
+          { "Description": "Practice your morning routine in advance." }
+        ]
+      },
+      {
+        "Title": "Stay Connected",
+        "Points": [
+          { "Description": "Check in during breaks with caregivers." },
+          { "Description": "Spend quality time with your baby after work." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Stroller Safety Tips",
+    "ImagePath": "TipsAndTricks/Stroller Safety Tips.png",
+    "Tips": [
+      {
+        "Title": "Use Properly",
+        "Points": [
+          { "Description": "Always buckle the harness securely." },
+          { "Description": "Engage brakes when stopped." }
+        ]
+      },
+      {
+        "Title": "Watch for Hazards",
+        "Points": [
+          { "Description": "Avoid uneven sidewalks and steep hills." },
+          { "Description": "Keep shopping bags balanced." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Managing Baby’s Routine",
+    "ImagePath": "TipsAndTricks/Managing Baby’s Routine.png",
+    "Tips": [
+      {
+        "Title": "Set Consistent Times",
+        "Points": [
+          { "Description": "Create predictable feeding, play, and sleep times." },
+          { "Description": "Flex slightly based on baby’s needs." }
+        ]
+      },
+      {
+        "Title": "Track Patterns",
+        "Points": [
+          { "Description": "Use a baby tracker app or notebook." },
+          { "Description": "Helps spot changes or concerns." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Laundry Tips for Baby Clothes",
+    "ImagePath": "TipsAndTricks/Laundry Tips for Baby Clothes.png",
+    "Tips": [
+      {
+        "Title": "Use Gentle Detergent",
+        "Points": [
+          { "Description": "Choose fragrance-free and hypoallergenic options." },
+          { "Description": "Wash separately from regular laundry." }
+        ]
+      },
+      {
+        "Title": "Remove Stains",
+        "Points": [
+          { "Description": "Treat stains early with baby-safe solutions." },
+          { "Description": "Sunlight can help fade stains naturally." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Introducing Pets to Baby",
+    "ImagePath": "TipsAndTricks/Introducing Pets to Baby.png",
+    "Tips": [
+      {
+        "Title": "Start Slow",
+        "Points": [
+          { "Description": "Let pets smell baby’s clothes first." },
+          { "Description": "Supervise early interactions." }
+        ]
+      },
+      {
+        "Title": "Maintain Boundaries",
+        "Points": [
+          { "Description": "Keep pet areas separate from sleeping areas." },
+          { "Description": "Train pets for calm behavior around the baby." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Traveling with a Baby",
+    "ImagePath": "TipsAndTricks/Traveling with a Baby.png",
+    "Tips": [
+      {
+        "Title": "Plan Smart",
+        "Points": [
+          { "Description": "Travel during nap time when possible." },
+          { "Description": "Pack extra diapers, clothes, and snacks." }
+        ]
+      },
+      {
+        "Title": "Stay Calm",
+        "Points": [
+          { "Description": "Take breaks to feed and soothe baby." },
+          { "Description": "Use a baby carrier or travel stroller." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Caring for Umbilical Cord",
+    "ImagePath": "TipsAndTricks/Caring for Umbilical Cord.png",
+    "Tips": [
+      {
+        "Title": "Keep it Dry",
+        "Points": [
+          { "Description": "Avoid covering with tight diapers." },
+          { "Description": "Give sponge baths until it falls off." }
+        ]
+      },
+      {
+        "Title": "Watch for Infection",
+        "Points": [
+          { "Description": "Check for redness, swelling, or pus." },
+          { "Description": "Call doctor if anything unusual occurs." }
+        ]
+      }
+    ]
+  },
+  {
+    "Title": "Using White Noise",
+    "ImagePath": "TipsAndTricks/Using White Noise.png",
+    "Tips": [
+      {
+        "Title": "Create Calm",
+        "Points": [
+          { "Description": "Use soft, consistent sounds during sleep." },
+          { "Description": "Avoid sudden or loud noises." }
+        ]
+      },
+      {
+        "Title": "Use Safely",
+        "Points": [
+          { "Description": "Keep device at a safe distance." },
+          { "Description": "Don’t exceed 50 decibels." }
+        ]
+      }
+    ]
+  }
+]

@@ -1,5 +1,6 @@
 ﻿using MamyCare.Contracts.BabyFeature;
 using MamyCare.Contracts.MotherFeatures;
+using System.Threading.Tasks;
 
 namespace MamyCare.Services
 {
@@ -15,6 +16,10 @@ namespace MamyCare.Services
         Task<List<VideosResponse>> ArabicVideosGetAll();
         Task<List<VideosResponse>> EnglishVideossGetAll();
         Task<VideosResponse> VideoGetById(int VideoId);
+        Task<Result<List<TipsandtricksResponse>>> TipsAndTricksGetAll();
+        Task<Result<TipsandtricksResponse>> TipsAndTricksGetById(int id);
+
+
 
 
     }

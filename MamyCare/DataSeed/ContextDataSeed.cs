@@ -130,6 +130,22 @@ namespace MamyCare.DataSeed
 
 
             }
+            if (!context.TipsAndTricks.Any())
+            {
+                var tricksData = File.ReadAllText("DataSeed/tips_tricks.json");
+                var tricks = JsonSerializer.Deserialize<List<TipsAndTricks>>(tricksData);
+                if (tricks?.Count > 0)
+                {
+                    foreach (var item in tricks)
+                    {
+                        context.TipsAndTricks.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+
+
+            }
 
 
         }

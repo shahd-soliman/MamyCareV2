@@ -1,19 +1,20 @@
 ﻿using MamyCare.Contracts.BabyFeature;
 using MamyCare.Contracts.MotherFeatures;
 using MamyCare.Entities;
+using MamyCare.Errors;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace MamyCare.Services
 {
-    public class MotherFeaturesService (ApplicationDbContext context , IOptions<ServerSettings> optioins): IMotherFeaturesService
+    public class MotherFeaturesService(ApplicationDbContext context, IOptions<ServerSettings> optioins) : IMotherFeaturesService
     {
-        private readonly ApplicationDbContext _context=context;
+        private readonly ApplicationDbContext _context = context;
         private readonly string _baseUrl = optioins.Value.BaseUrl;
         public async Task<List<ArticleResponse>> ArabicArticlesGetAll()
         {
-            var Articles = await _context.Articles.Where(x=>x.IsArabic==true).ToListAsync();
+            var Articles = await _context.Articles.Where(x => x.IsArabic==true).ToListAsync();
             var response = Articles.Adapt<List<ArticleResponse>>();
 
             foreach (var activity in response)
@@ -40,7 +41,7 @@ namespace MamyCare.Services
 
         public async Task<ArticleResponse> ArticlesGetById(int Articleid)
         {
-            var Articles = await _context.Articles.FirstOrDefaultAsync(x=>x.Id== Articleid);
+            var Articles = await _context.Articles.FirstOrDefaultAsync(x => x.Id== Articleid);
             var response = Articles.Adapt<ArticleResponse>();
 
 
@@ -59,7 +60,7 @@ namespace MamyCare.Services
         }
         public async Task<List<PodcastResponse>> EnglishPodcastGetAll()
         {
-            var Podcasts = await _context.Podcasts.Where(x=>x.IsArabic==false).ToListAsync();
+            var Podcasts = await _context.Podcasts.Where(x => x.IsArabic==false).ToListAsync();
             var response = Podcasts.Adapt<List<PodcastResponse>>();
             return response;
 
@@ -91,6 +92,28 @@ namespace MamyCare.Services
             var Videos = await _context.Videos.FirstOrDefaultAsync(x => x.Id== VideoId);
             var response = Videos.Adapt<VideosResponse>();
             return response;
+        }
+
+        public async Task<Result<List<TipsandtricksResponse>>> TipsAndTricksGetAll()
+        {
+            var tricks = await _context.TipsAndTricks.Include(x => x.Tips!).ThenInclude(t => t.Points)  .ToListAsync();
+            if (tricks.Count==0)
+                return Result.Failure<List<TipsandtricksResponse>>(BabyFeaturesErrorr.EmptyTipsandTricks);
+            var response = tricks.Adapt<List<TipsandtricksResponse>>();
+            foreach(var item in response)
+            {
+                item.ImagePath=$"{_baseUrl}{item.ImagePath}";
+            }
+            return Result.Success(response);
+
+        }
+
+        public async Task<Result<TipsandtricksResponse>> TipsAndTricksGetById(int id)
+        {
+            var trick = await _context.TipsAndTricks.Include(x => x.Tips!).ThenInclude(t => t.Points).FirstOrDefaultAsync(x=>x.Id==id);
+            var response = trick.Adapt<TipsandtricksResponse>();
+            response.ImagePath = $"{_baseUrl}{response.ImagePath}";
+            return Result.Success(response);
         }
     }
 }

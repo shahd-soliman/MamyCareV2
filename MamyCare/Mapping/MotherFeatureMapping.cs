@@ -20,6 +20,9 @@ namespace MamyCare.Mapping
                  .Map(dest => dest.URL, src => src.URL)
                 .Map(dest => dest.Duration, src => src.Duration)
                 .Map(dest => dest.Type, src => src.Type);
+
+            TypeAdapterConfig<TipsAndTricks, TipsandtricksResponse>
+                .NewConfig();
         }
     }
     

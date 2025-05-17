@@ -115,6 +115,28 @@ namespace MamyCare.Controllers
             }
             return Ok(Videos);
         }
+
+        [HttpGet("TipsAndtricks")]
+        public async Task<ActionResult<List<TipsandtricksResponse>>> TipsAndtricksGetAll()
+        {
+            var tricks = await _motherFeaturesService.TipsAndTricksGetAll();
+            if (tricks == null )
+            {
+                return BadRequest();
+            }
+            return Ok(tricks.Value);
+        }
+
+        [HttpGet("TipsAndTricks/{TrickId}")]
+        public async Task<ActionResult<TipsandtricksResponse>> TrickeGetById(int TrickId)
+        {
+            var trick = await _motherFeaturesService.TipsAndTricksGetById(TrickId);
+            if (trick == null)
+            {
+                return BadRequest();
+            }
+            return Ok(trick.Value);
+        }
     }
 }
 
