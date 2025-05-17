@@ -32,12 +32,12 @@ namespace MamyCare.Entities
         public Gender gender { get; set; }
 
        public bool? IsActive { get; set; } = true;
-        public List<string>? MemoriesPicsUrls { get; set; }
         public int motherId { get; set; }
         [ForeignKey(nameof(motherId))]
         [JsonIgnore]
         public Mother Mother { get; set; }
 
         public List<Reminder>? Reminders { get; set; }
+        public List<Gallary>? Gallary { get; set; }
     }
 }

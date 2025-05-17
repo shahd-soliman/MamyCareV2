@@ -13,6 +13,13 @@ namespace MamyCare.Mapping
                 .Map(dest => dest.Views, src => src.Views)
                 .Map(dest => dest.CreatedAt, src => src.CreatedAt)
                 .Map(dest => dest.ImageUrl, src => src.ImageUrl);
+
+            TypeAdapterConfig<Podcast, PodcastResponse>
+                 .NewConfig()
+                 .Map(dest => dest.Title, src => src.Title)
+                 .Map(dest => dest.URL, src => src.URL)
+                .Map(dest => dest.Duration, src => src.Duration)
+                .Map(dest => dest.Type, src => src.Type);
         }
     }
     

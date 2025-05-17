@@ -4,6 +4,7 @@ using MamyCare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MamyCare.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250516020603_AddTipsAndTricksTable")]
+    partial class AddTipsAndTricksTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,6 +171,9 @@ namespace MamyCare.Data.Migrations
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<string>("MemoriesPicsUrls")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilePicUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -200,33 +206,6 @@ namespace MamyCare.Data.Migrations
                     b.HasIndex("hospitalId");
 
                     b.ToTable("FavouriteHospitals");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Gallary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("BabyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BabyId");
-
-                    b.ToTable("Gallaries");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.GovernorateHospital", b =>
@@ -730,15 +709,6 @@ namespace MamyCare.Data.Migrations
                     b.Navigation("Mother");
                 });
 
-            modelBuilder.Entity("MamyCare.Entities.Gallary", b =>
-                {
-                    b.HasOne("MamyCare.Entities.Baby", "Baby")
-                        .WithMany("Gallary")
-                        .HasForeignKey("BabyId");
-
-                    b.Navigation("Baby");
-                });
-
             modelBuilder.Entity("MamyCare.Entities.Hospital", b =>
                 {
                     b.HasOne("MamyCare.Entities.GovernorateHospital", "Governorate")
@@ -863,8 +833,6 @@ namespace MamyCare.Data.Migrations
 
             modelBuilder.Entity("MamyCare.Entities.Baby", b =>
                 {
-                    b.Navigation("Gallary");
-
                     b.Navigation("Reminders");
                 });
 

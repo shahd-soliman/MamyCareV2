@@ -5,7 +5,7 @@ using Mapster;
 
 namespace MamyCare.Mapping
 {
-    public class ActivityMapping : IRegister
+    public class BabyFeaturesMapping : IRegister
     {
         public void Register(TypeAdapterConfig config)
         {
@@ -15,13 +15,12 @@ namespace MamyCare.Mapping
                 .Map(dest => dest.content, src => src.content)
                 .Map(dest => dest.imageUrl, src => src.imageUrl);
 
-            TypeAdapterConfig<Podcast, PodcastResponse>
-                 .NewConfig()
-                 .Map(dest => dest.Title, src => src.Title)
-                 .Map(dest => dest.URL, src => src.URL)
-                .Map(dest => dest.Duration, src => src.Duration)
-                .Map(dest => dest.Type, src => src.Type);
 
+            TypeAdapterConfig<Gallary, GallaryResponse>
+                 .NewConfig()
+                 .Map(dest => dest.ImageUrl, src => src.ImageUrl)
+                .Map(dest => dest.Description, src => src.Description)
+                .Map(dest => dest.CreatedAt, src => src.CreatedAt);
         }
     }
 

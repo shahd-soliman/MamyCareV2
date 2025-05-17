@@ -35,6 +35,7 @@
     <Folder Include="Data\Migrations\" />
     <Folder Include="wwwroot\MotherProfilePicture\" />
     <Folder Include="wwwroot\BabyProfilePicture\" />
+    <Folder Include="wwwroot\Gallary\" />
   </ItemGroup>
 
   <ItemGroup>

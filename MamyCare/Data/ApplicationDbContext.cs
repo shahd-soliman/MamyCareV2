@@ -23,7 +23,9 @@ namespace MamyCare.Data
         public DbSet<NutritionalValue> NutritionalValues { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Podcast> Podcasts { get; set; }
-
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<TipsAndTricks> TipsAndTricks { get; set; }
+        public DbSet<Gallary> Gallaries { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
@@ -31,7 +33,7 @@ namespace MamyCare.Data
     .HasOne(r => r.NutritionalValues)
     .WithOne()
     .HasForeignKey<Recipe>(r => r.NutritionalValuesId)
-    .OnDelete(DeleteBehavior.Cascade); // أو Restrict حسب المطلوب
+    .OnDelete(DeleteBehavior.Cascade);
 
 
             base.OnModelCreating(modelBuilder);

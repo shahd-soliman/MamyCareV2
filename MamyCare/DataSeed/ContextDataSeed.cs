@@ -114,6 +114,22 @@ namespace MamyCare.DataSeed
 
 
             }
+            if (!context.Videos.Any())
+            {
+                var VideosData = File.ReadAllText("DataSeed/videos.json");
+                var videos = JsonSerializer.Deserialize<List<Video>>(VideosData);
+                if (videos?.Count > 0)
+                {
+                    foreach (var item in videos)
+                    {
+                        context.Videos.Add(item);
+
+                        await context.SaveChangesAsync();
+                    }
+                }
+
+
+            }
 
 
         }

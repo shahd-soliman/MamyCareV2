@@ -82,6 +82,39 @@ namespace MamyCare.Controllers
 
 
         }
+
+        [HttpGet("Videos/{VideoId}")]
+        public async Task<ActionResult<VideosResponse>> VideoGetById(int VideoId)
+        {
+            var Video = await _motherFeaturesService.VideoGetById(VideoId);
+            if (Video == null)
+            {
+                return BadRequest();
+            }
+            return Ok(Video);
+        }
+
+        [HttpGet("ArabicVideos")]
+        public async Task<ActionResult<List<VideosResponse>>> ArabicVideos()
+        {
+            var Videos = await _motherFeaturesService.ArabicVideosGetAll();
+            if (Videos == null || Videos.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(Videos);
+        }
+
+        [HttpGet("EnglishVideos")]
+        public async Task<ActionResult<List<VideosResponse>>> EnglishVideos()
+        {
+            var Videos = await _motherFeaturesService.EnglishVideossGetAll();
+            if (Videos == null || Videos.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(Videos);
+        }
     }
 }
 

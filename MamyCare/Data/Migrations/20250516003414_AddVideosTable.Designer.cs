@@ -4,6 +4,7 @@ using MamyCare.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MamyCare.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250516003414_AddVideosTable")]
+    partial class AddVideosTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,6 +171,9 @@ namespace MamyCare.Data.Migrations
                     b.Property<bool?>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<string>("MemoriesPicsUrls")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProfilePicUrl")
                         .HasColumnType("nvarchar(max)");
 
@@ -200,33 +206,6 @@ namespace MamyCare.Data.Migrations
                     b.HasIndex("hospitalId");
 
                     b.ToTable("FavouriteHospitals");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Gallary", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("BabyId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BabyId");
-
-                    b.ToTable("Gallaries");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.GovernorateHospital", b =>
@@ -397,33 +376,6 @@ namespace MamyCare.Data.Migrations
                     b.ToTable("Podcasts");
                 });
 
-            modelBuilder.Entity("MamyCare.Entities.Points", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("pointid")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("tipId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("pointid");
-
-                    b.HasIndex("tipId");
-
-                    b.ToTable("Points");
-                });
-
             modelBuilder.Entity("MamyCare.Entities.Recipe", b =>
                 {
                     b.Property<int>("Id")
@@ -485,58 +437,6 @@ namespace MamyCare.Data.Migrations
                     b.HasIndex("BabyId");
 
                     b.ToTable("Reminders");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Tip", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("TipId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TipsTricksId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("pointid")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TipId");
-
-                    b.ToTable("Tip");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.TipsAndTricks", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TipId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TipsAndTricks");
                 });
 
             modelBuilder.Entity("MamyCare.Entities.Video", b =>
@@ -730,15 +630,6 @@ namespace MamyCare.Data.Migrations
                     b.Navigation("Mother");
                 });
 
-            modelBuilder.Entity("MamyCare.Entities.Gallary", b =>
-                {
-                    b.HasOne("MamyCare.Entities.Baby", "Baby")
-                        .WithMany("Gallary")
-                        .HasForeignKey("BabyId");
-
-                    b.Navigation("Baby");
-                });
-
             modelBuilder.Entity("MamyCare.Entities.Hospital", b =>
                 {
                     b.HasOne("MamyCare.Entities.GovernorateHospital", "Governorate")
@@ -761,19 +652,6 @@ namespace MamyCare.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("MamyCare.Entities.Points", b =>
-                {
-                    b.HasOne("MamyCare.Entities.Tip", null)
-                        .WithMany("Points")
-                        .HasForeignKey("pointid");
-
-                    b.HasOne("MamyCare.Entities.Tip", "Tip")
-                        .WithMany()
-                        .HasForeignKey("tipId");
-
-                    b.Navigation("Tip");
-                });
-
             modelBuilder.Entity("MamyCare.Entities.Recipe", b =>
                 {
                     b.HasOne("MamyCare.Entities.MamyCare.Data.NutritionalValue", "NutritionalValues")
@@ -793,15 +671,6 @@ namespace MamyCare.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Baby");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Tip", b =>
-                {
-                    b.HasOne("MamyCare.Entities.TipsAndTricks", "TipsAndTricks")
-                        .WithMany("Tips")
-                        .HasForeignKey("TipId");
-
-                    b.Navigation("TipsAndTricks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -863,8 +732,6 @@ namespace MamyCare.Data.Migrations
 
             modelBuilder.Entity("MamyCare.Entities.Baby", b =>
                 {
-                    b.Navigation("Gallary");
-
                     b.Navigation("Reminders");
                 });
 
@@ -878,16 +745,6 @@ namespace MamyCare.Data.Migrations
                     b.Navigation("Babies");
 
                     b.Navigation("FavouriteHospitals");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.Tip", b =>
-                {
-                    b.Navigation("Points");
-                });
-
-            modelBuilder.Entity("MamyCare.Entities.TipsAndTricks", b =>
-                {
-                    b.Navigation("Tips");
                 });
 #pragma warning restore 612, 618
         }

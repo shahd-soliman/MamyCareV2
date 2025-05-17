@@ -1,5 +1,6 @@
 ﻿using MamyCare.Contracts.BabyFeature;
 using MamyCare.Contracts.MotherFeatures;
+using MamyCare.Entities;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -68,6 +69,27 @@ namespace MamyCare.Services
         {
             var Podcasts = await _context.Podcasts.FirstOrDefaultAsync(x => x.Id== podcastid);
             var response = Podcasts.Adapt<PodcastResponse>();
+            return response;
+        }
+
+        public async Task<List<VideosResponse>> ArabicVideosGetAll()
+        {
+            var Videos = await _context.Videos.Where(x => x.IsArabic==true).ToListAsync();
+            var response = Videos.Adapt<List<VideosResponse>>();
+            return response;
+        }
+
+        public async Task<List<VideosResponse>> EnglishVideossGetAll()
+        {
+            var Videos = await _context.Videos.Where(x => x.IsArabic==false).ToListAsync();
+            var response = Videos.Adapt<List<VideosResponse>>();
+            return response;
+        }
+
+        public async Task<VideosResponse> VideoGetById(int VideoId)
+        {
+            var Videos = await _context.Videos.FirstOrDefaultAsync(x => x.Id== VideoId);
+            var response = Videos.Adapt<VideosResponse>();
             return response;
         }
     }

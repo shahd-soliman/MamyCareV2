@@ -27,5 +27,7 @@ public static class UserErrors
         new("User.EmailAlreadyConfirmed", "EmailAlreadyConfirmed", StatusCodes.Status401Unauthorized);
     public static readonly Error ImageError =
     new("User.EmailAlreadyConfirmed", "Image Extention or Size  not alllowed", StatusCodes.Status401Unauthorized);
-    
+
+ 
+
 }
