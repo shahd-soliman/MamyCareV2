@@ -23,28 +23,26 @@ public class EmailSenderService : IEmailSender
 
     public async Task SendEmailAsync(string email, string subject, string htmlMessage)
     {
-        var message = new MimeMessage
-        {
-            Sender = MailboxAddress.Parse(_mailSettings.Mail),
-            Subject = subject
-        };
-
+        var message = new MimeMessage();
+        message.From.Add(new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail));
+        message.Sender = new MailboxAddress(_mailSettings.DisplayName, _mailSettings.Mail);
         message.To.Add(MailboxAddress.Parse(email));
+        message.Subject = subject;
 
         var builder = new BodyBuilder
         {
             HtmlBody = htmlMessage
         };
-
         message.Body = builder.ToMessageBody();
 
         using var smtp = new SmtpClient();
-        
-        _logger.LogInformation("Sending email to {email}", email);
         smtp.CheckCertificateRevocation = false;
-        smtp.Connect(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
-        smtp.Authenticate(_mailSettings.Mail, _mailSettings.Password);
+
+        _logger.LogInformation("📧 Sending email to {email}", email);
+
+        await smtp.ConnectAsync(_mailSettings.Host, _mailSettings.Port, SecureSocketOptions.StartTls);
+        await smtp.AuthenticateAsync(_mailSettings.Mail, _mailSettings.Password);
         await smtp.SendAsync(message);
-        smtp.Disconnect(true);
+        await smtp.DisconnectAsync(true);
     }
 }

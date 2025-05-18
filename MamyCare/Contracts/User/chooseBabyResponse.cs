@@ -3,8 +3,8 @@
     public class chooseBabyResponse
     {
         public string BabyName { get; set; }
-        public DateTime BirthDate { get; set; }
-        public string Gender { get; set; }
+        public DateOnly BirthDate { get; set; }
+        public Gender Gender { get; set; }
         public string BabyImageUrl { get; set; }
     }
 }

@@ -144,23 +144,31 @@ namespace MamyCare.Services
                 .Include(m => m.Babies)
                 .FirstOrDefaultAsync(m => m.UserId == UserId);
 
+
             var baby = await _context.Babies.FirstOrDefaultAsync(b => b.id == BabyId);
 
             baby!.IsActive = true;
-
-            foreach (var b in mother!.Babies)
+            if(mother!.Babies.Count>1)
             {
-                if (b.id == BabyId)
+                foreach (var b in mother!.Babies)
+                {
+                    if (b.id == BabyId)
 
-                    continue;
+                        continue;
 
-                b.IsActive = false;
+                    b.IsActive = false;
+                }
             }
+            
 
             await _context.SaveChangesAsync();
-            var response = baby.Adapt<chooseBabyResponse>();
-            if(response.BabyImageUrl != null)
-                response.BabyImageUrl = $"{_baseUrl}{response.BabyImageUrl}";
+            var response = new chooseBabyResponse
+            {
+                BabyName = baby.BabyName,
+                BirthDate = baby.BirthDate,
+                BabyImageUrl = baby.ProfilePicUrl != null ? $"{_baseUrl}{baby.ProfilePicUrl}" : null
+            };
+
 
             return Result.Success(response);
         }

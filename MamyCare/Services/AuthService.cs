@@ -83,7 +83,7 @@ namespace MamyCare.Services
                     MotherImageUrl = Path.Combine("MotherProfilePicture", imageName).Replace("\\", "/");
 
                     var fileExists = System.IO.File.Exists(path);
-                    
+
                 }
 
                 if (request.BabyImage is not null)
@@ -103,9 +103,7 @@ namespace MamyCare.Services
                         BabyImageUrl = Path.Combine("BabyProfilePicture", imageName).Replace("\\", "/");
 
                         var fileExists = System.IO.File.Exists(path);
-                        Console.WriteLine($"File created successfully: {fileExists}");
-                        Console.WriteLine($"WebRootPath: {_webHostEnvironment.WebRootPath}");
-                        Console.WriteLine($"ContentRootPath: {_webHostEnvironment.ContentRootPath}");
+                      
                     }
                     catch (Exception ex)
                     {
@@ -127,7 +125,8 @@ namespace MamyCare.Services
                             BirthDate = request.BirthDate,
                             BabyName = request.babyName,
                             gender = request.gender,
-                            ProfilePicUrl = BabyImageUrl
+                            ProfilePicUrl = BabyImageUrl,
+                            IsActive=true
                         }
                     }
                 };
@@ -142,15 +141,15 @@ namespace MamyCare.Services
                 mother = await _context.Mothers
                     .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
                     .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
-                
-                var Babiesresponse =mother!.Babies.Adapt<List<BabyResponse>>();
+
+                var Babiesresponse = mother!.Babies.Adapt<List<BabyResponse>>();
                 foreach (var item in Babiesresponse)
                 {
                     item.imageurl= $"{_baseUrl}{item.imageurl}";
                 }
 
                 var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
-              
+
                 return Result<AuthResponse>.Success(response);
             }
             catch (Exception ex)
@@ -178,19 +177,28 @@ namespace MamyCare.Services
             await _userManager.UpdateAsync(user);
 
             var mother = await _context.Mothers
-                .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
+                .Include(x => x.Babies)
                 .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
 
-            var Babiesresponse = mother!.Babies.Adapt<List<BabyResponse>>();
-            foreach (var item in Babiesresponse)
+            if (mother == null)
             {
-                item.imageurl= $"{_baseUrl}{item.imageurl}";
+                return Result.Failure<AuthResponse>(new Error("NotFound", "Mother not found", StatusCodes.Status404NotFound));
             }
 
+            var Babies = mother.Babies
+                .Where(b => b.IsActive == true);
 
-            var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
+            var Babiesresponse= Babies.Adapt<List<BabyResponse>>();
+
+            foreach (var item in Babiesresponse)
+            {
+                item.imageurl = $"{_baseUrl}{item.imageurl}";
+            }
+
+            var response = new AuthResponse(user.Id, mother.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
             return Result<AuthResponse>.Success(response);
         }
+
 
         public async Task<Result> SendForgetPasswordEmail(ForgetPasswordRequest request)
         {
@@ -209,7 +217,7 @@ namespace MamyCare.Services
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
 
-            if (user is null || !user.EmailConfirmed)
+            if (user is null)
                 return Result.Failure(UserErrors.InvalidCode);
 
             IdentityResult result;
@@ -252,7 +260,7 @@ namespace MamyCare.Services
             var emailBody = EmailBodyBuilder.GenerateBodyBuilder("ForgetPassword",
                 new Dictionary<string, string>
                 {
-                    {"{{name}}", user.Mother.FirstName!},
+                    {"{{name}}", "Mother"},
                     {"{{action_url}}", $"{origin}/auth/forgetPassword?email={user.Email}&code={code}"}
                 });
             await _emailService.SendEmailAsync(user.Email!, "Reset Password", emailBody);

@@ -86,25 +86,24 @@ namespace MamyCare
                 };
             });
 
-            // إعداد AddIdentity بدون أي ارتباط بالكوكي
-            services.AddIdentityCore<ApplicationUser>(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole<int>>(options =>
             {
-                // إعدادات كلمات المرور، المستخدمين، إلخ
+                // إعدادات كلمات المرور
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
-                options.SignIn.RequireConfirmedEmail = false;
 
-                // إعدادات المستخدمين
                 options.User.RequireUniqueEmail = true;
 
-                // تعطيل التأكيد المطلوب للحساب
+                options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedAccount = false;
             })
-            .AddRoles<IdentityRole<int>>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+ .AddEntityFrameworkStores<ApplicationDbContext>()
+ .AddDefaultTokenProviders();
+
+
 
             return services;
         }

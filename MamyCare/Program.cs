@@ -11,11 +11,7 @@ namespace MamyCare
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // إضافة الإعدادات قبل بناء التطبيق
-            builder.Configuration
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddUserSecrets<Program>();
-
+          
             // جلب إعدادات البريد الإلكتروني من appsettings.json
             var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
             Console.WriteLine($"Email: {emailSettings?.Mail}, Host: {emailSettings?.Host}, Port: {emailSettings?.Port}");
