@@ -18,6 +18,7 @@ namespace MamyCare.Mapping
 
             TypeAdapterConfig<Gallary, GallaryResponse>
                  .NewConfig()
+                 .Map(dest => dest.Id, src => src.Id)
                  .Map(dest => dest.ImageUrl, src => src.ImageUrl)
                 .Map(dest => dest.Description, src => src.Description)
                 .Map(dest => dest.CreatedAt, src => src.CreatedAt);
