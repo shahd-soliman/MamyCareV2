@@ -85,11 +85,9 @@ namespace MamyCare
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSetting!.Key))
                 };
             });
-
-            services.AddIdentity<ApplicationUser, IdentityRole<int>>(options =>
+            services.AddIdentityCore<ApplicationUser>(options =>
             {
-                // إعدادات كلمات المرور
-                options.Password.RequireDigit = false;
+                options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
@@ -100,8 +98,10 @@ namespace MamyCare
                 options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedAccount = false;
             })
- .AddEntityFrameworkStores<ApplicationDbContext>()
- .AddDefaultTokenProviders();
+            .AddRoles<IdentityRole<int>>()  
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
 
 
 
