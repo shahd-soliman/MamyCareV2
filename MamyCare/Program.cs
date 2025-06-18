@@ -56,10 +56,8 @@ namespace MamyCare
             app.UseAuthentication();
             app.UseAuthorization();
 
-            // Middleware لحذف الكوكي
             app.Use(async (context, next) =>
             {
-                // حذف الكوكي قبل معالجة الطلب
                 if (context.Response.Cookies != null)
                 {
                     context.Response.Cookies.Delete(".AspNetCore.Identity.Application");

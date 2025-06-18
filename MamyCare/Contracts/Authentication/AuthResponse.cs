@@ -5,7 +5,7 @@
     string Name,
     string? Email,
     string Token,
-    List<BabyResponse> Babies,
+    List<Baby> Babies,
     string? ImageUrl
 );
 }

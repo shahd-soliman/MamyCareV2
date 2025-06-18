@@ -142,11 +142,12 @@ namespace MamyCare.Services
                     .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
                     .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
 
-                var Babiesresponse = mother!.Babies.Adapt<List<BabyResponse>>();
+                var Babiesresponse = mother!.Babies.ToList();
                 
                 foreach (var item in Babiesresponse)
                 {
-                    item.imageurl= $"{_baseUrl}{item.imageurl}";
+                    if (item.ProfilePicUrl !=null)
+                    item.ProfilePicUrl= $"{_baseUrl}{item.ProfilePicUrl}";
                 }
 
                 var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
@@ -186,17 +187,17 @@ namespace MamyCare.Services
                 return Result.Failure<AuthResponse>(new Error("NotFound", "Mother not found", StatusCodes.Status404NotFound));
             }
 
-            var Babies = mother.Babies
-                .Where(b => b.IsActive == true);
+            var Babies = mother.Babies.ToList();
+                ;
 
-            var Babiesresponse= Babies.Adapt<List<BabyResponse>>();
 
-            foreach (var item in Babiesresponse)
+            foreach (var item in Babies)
             {
-                item.imageurl = $"{_baseUrl}{item.imageurl}";
+                if(item.ProfilePicUrl !=null)
+                item.ProfilePicUrl = $"{_baseUrl}{item.ProfilePicUrl}";
             }
 
-            var response = new AuthResponse(user.Id, mother.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
+            var response = new AuthResponse(user.Id, mother.FirstName!, user.Email, token, Babies, $"{_baseUrl}{mother.ImageUrl}");
             return Result<AuthResponse>.Success(response);
         }
 
