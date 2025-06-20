@@ -142,11 +142,11 @@ namespace MamyCare.Services
                     .Include(x => x.Babies).Where(x => x.Babies.Any(b => b.IsActive == true))
                     .FirstOrDefaultAsync(x => x.UserId == user.Id, cancellationToken);
 
-                var Babiesresponse = mother!.Babies.Adapt<List<BabyResponse>>();
+                var Babiesresponse = mother!.Babies.ToList();
                 
                 foreach (var item in Babiesresponse)
                 {
-                    item.imageurl= $"{_baseUrl}{item.imageurl}";
+                    item.ProfilePicUrl= $"{_baseUrl}{item.ProfilePicUrl}";
                 }
 
                 var response = new AuthResponse(user.Id, mother!.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
@@ -187,16 +187,20 @@ namespace MamyCare.Services
             }
 
             var Babies = mother.Babies
-                .Where(b => b.IsActive == true);
+                .Where(b => b.IsActive == true).ToList();
 
-            var Babiesresponse= Babies.Adapt<List<BabyResponse>>();
+        
 
-            foreach (var item in Babiesresponse)
+            foreach (var item in Babies)
             {
-                item.imageurl = $"{_baseUrl}{item.imageurl}";
+                if(item.ProfilePicUrl !=null)
+                {
+                    item.ProfilePicUrl = $"{_baseUrl}images/default-baby.png"; 
+                }
+                item.ProfilePicUrl = $"{_baseUrl}{item.ProfilePicUrl}";
             }
 
-            var response = new AuthResponse(user.Id, mother.FirstName!, user.Email, token, Babiesresponse, $"{_baseUrl}{mother.ImageUrl}");
+            var response = new AuthResponse(user.Id, mother.FirstName!, user.Email, token, Babies, $"{_baseUrl}{mother.ImageUrl}");
             return Result<AuthResponse>.Success(response);
         }
 
