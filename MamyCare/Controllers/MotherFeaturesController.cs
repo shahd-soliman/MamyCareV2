@@ -137,10 +137,10 @@ namespace MamyCare.Controllers
             return Ok(podcast);
         }
 
-        [HttpGet("ArabicVideos/Top10")]
+        [HttpGet("ArabicVideos/Top4")]
         public async Task<ActionResult<List<VideosResponse>>> ArabicVideosTop10()
         {
-            var Videos = await _motherFeaturesService.ArabicVideosGetTop(10);
+            var Videos = await _motherFeaturesService.ArabicVideosGetTop(4);
             if (Videos == null || Videos.Count == 0)
             {
                 return BadRequest();
@@ -148,7 +148,7 @@ namespace MamyCare.Controllers
             return Ok(Videos);
         }
 
-        [HttpGet("ArabicArticles/Top10")]
+        [HttpGet("ArabicArticles/Top4")]
         public async Task<ActionResult<List<ArticleResponse>>> ArabicArticlesTop10()
         {
             var articles = await _motherFeaturesService.ArabicArticlesGetAll();
@@ -156,10 +156,10 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(articles.Take(10));
+            return Ok(articles.Take(4));
         }
 
-        [HttpGet("EnglishArticles/Top10")]
+        [HttpGet("EnglishArticles/Top4")]
         public async Task<ActionResult<List<ArticleResponse>>> EnglishArticlesTop10()
         {
             var articles = await _motherFeaturesService.EnglishArticlesGetAll();
@@ -167,10 +167,10 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(articles.Take(10));
+            return Ok(articles.Take(4));
         }
 
-        [HttpGet("ArabicPodcasts/Top10")]
+        [HttpGet("ArabicPodcasts/Top4")]
         public async Task<ActionResult<List<PodcastResponse>>> ArabicPodcastsTop10()
         {
             var podcasts = await _motherFeaturesService.ArabicPodcastGetAll();
@@ -178,10 +178,10 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(podcasts.Take(10));
+            return Ok(podcasts.Take(4));
         }
 
-        [HttpGet("EnglishPodcasts/Top10")]
+        [HttpGet("EnglishPodcasts/Top4")]
         public async Task<ActionResult<List<PodcastResponse>>> EnglishPodcastsTop10()
         {
             var podcasts = await _motherFeaturesService.EnglishPodcastGetAll();
@@ -189,10 +189,10 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(podcasts.Take(10));
+            return Ok(podcasts.Take(4));
         }
 
-        [HttpGet("EnglishVideos/Top10")]
+        [HttpGet("EnglishVideos/Top4")]
         public async Task<ActionResult<List<VideosResponse>>> EnglishVideosTop10()
         {
             var videos = await _motherFeaturesService.EnglishVideossGetAll();
@@ -200,10 +200,10 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(videos.Take(10));
+            return Ok(videos.Take(4));
         }
 
-        [HttpGet("TipsAndtricks/Top10")]
+        [HttpGet("TipsAndtricks/Top4")]
         public async Task<ActionResult<List<TipsandtricksResponse>>> TipsAndtricksTop10()
         {
             var tricksResult = await _motherFeaturesService.TipsAndTricksGetAll();
@@ -211,7 +211,7 @@ namespace MamyCare.Controllers
             {
                 return BadRequest();
             }
-            return Ok(tricksResult.Value.Take(10));
+            return Ok(tricksResult.Value.Take(4));
         }
 
         [HttpGet("Articles/Search")]
