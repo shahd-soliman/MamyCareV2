@@ -18,6 +18,8 @@ namespace MamyCare.Services
         Task<VideosResponse> VideoGetById(int VideoId);
         Task<Result<List<TipsandtricksResponse>>> TipsAndTricksGetAll();
         Task<Result<TipsandtricksResponse>> TipsAndTricksGetById(int id);
+        Task<List<VideosResponse>> ArabicVideosGetTop(int count);
+        Task<List<ArticleResponse>> SearchArticles(string search);
 
 
 

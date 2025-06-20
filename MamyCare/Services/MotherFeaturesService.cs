@@ -115,5 +115,25 @@ namespace MamyCare.Services
             response.ImagePath = $"{_baseUrl}{response.ImagePath}";
             return Result.Success(response);
         }
+
+        public async Task<List<VideosResponse>> ArabicVideosGetTop(int count)
+        {
+            var Videos = await _context.Videos.Where(x => x.IsArabic==true).Take(count).ToListAsync();
+            var response = Videos.Adapt<List<VideosResponse>>();
+            return response;
+        }
+
+        public async Task<List<ArticleResponse>> SearchArticles(string search)
+        {
+            var Articles = await _context.Articles
+                .Where(x => x.Title.Contains(search) || x.Description.Contains(search))
+                .ToListAsync();
+            var response = Articles.Adapt<List<ArticleResponse>>();
+            foreach (var article in response)
+            {
+                article.ImageUrl = $"{_baseUrl}{article.ImageUrl}";
+            }
+            return response;
+        }
     }
 }

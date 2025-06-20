@@ -12,17 +12,16 @@ namespace MamyCare
             var builder = WebApplication.CreateBuilder(args);
 
           
-            // جلب إعدادات البريد الإلكتروني من appsettings.json
+           
             var emailSettings = builder.Configuration.GetSection("EmailSettings").Get<EmailSettings>();
             Console.WriteLine($"Email: {emailSettings?.Mail}, Host: {emailSettings?.Host}, Port: {emailSettings?.Port}");
 
-            // إضافة الخدمات
+            
             builder.Services.AddDependencies(builder.Configuration);
             builder.Services.AddMapping();
 
             var app = builder.Build();
 
-            // تهيئة قاعدة البيانات والبذور
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
@@ -40,7 +39,6 @@ namespace MamyCare
                 }
             }
 
-            // تكوين الـ Middleware Pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();

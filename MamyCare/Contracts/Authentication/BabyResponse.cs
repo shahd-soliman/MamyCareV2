@@ -2,7 +2,6 @@
 {
     public class BabyResponse
     {
-        public int id;
         public string name { get; set; }
         public string imageurl { get; set; }
         public DateOnly BirthDate { get; set; }

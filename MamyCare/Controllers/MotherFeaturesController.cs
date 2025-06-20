@@ -26,6 +26,7 @@ namespace MamyCare.Controllers
             }
             return Ok(Articles);
         }
+        
         [HttpGet("EnglishArticles")]
         public async Task<ActionResult<List<ArticleResponse>>> EnglishArticlesGetAll()
         {
@@ -37,26 +38,6 @@ namespace MamyCare.Controllers
             return Ok(Articles);
         }
 
-        [HttpGet("Articles/{articleId}")]
-        public async Task<ActionResult<ArticleResponse>> ArticlesGetById(int articleId)
-        {
-            var Article = await _motherFeaturesService.ArticlesGetById(articleId);
-            if (Article == null)
-            {
-                return BadRequest();
-            }
-            return Ok(Article);
-        }
-        [HttpGet("Podcasts/{podcastid}")]
-        public async Task<ActionResult<PodcastResponse>> PodcastGetById(int podcastid)
-        {
-            var podcast = await _motherFeaturesService.PodcastsGetById(podcastid);
-            if (podcast == null)
-            {
-                return BadRequest();
-            }
-            return Ok(podcast);
-        }
 
         [HttpGet("ArabicPodcasts")]
         public async Task<ActionResult<List<PodcastResponse>>> ArabicPodcasts()
@@ -77,22 +58,10 @@ namespace MamyCare.Controllers
                 return BadRequest();
             }
             return Ok(podcasts);
-
-
-
-
         }
 
-        [HttpGet("Videos/{VideoId}")]
-        public async Task<ActionResult<VideosResponse>> VideoGetById(int VideoId)
-        {
-            var Video = await _motherFeaturesService.VideoGetById(VideoId);
-            if (Video == null)
-            {
-                return BadRequest();
-            }
-            return Ok(Video);
-        }
+     
+      
 
         [HttpGet("ArabicVideos")]
         public async Task<ActionResult<List<VideosResponse>>> ArabicVideos()
@@ -126,6 +95,16 @@ namespace MamyCare.Controllers
             }
             return Ok(tricks.Value);
         }
+           [HttpGet("Videos/{VideoId}")]
+        public async Task<ActionResult<VideosResponse>> VideoGetById(int VideoId)
+        {
+            var Video = await _motherFeaturesService.VideoGetById(VideoId);
+            if (Video == null)
+            {
+                return BadRequest();
+            }
+            return Ok(Video);
+        }
 
         [HttpGet("TipsAndTricks/{TrickId}")]
         public async Task<ActionResult<TipsandtricksResponse>> TrickeGetById(int TrickId)
@@ -136,6 +115,118 @@ namespace MamyCare.Controllers
                 return BadRequest();
             }
             return Ok(trick.Value);
+        }
+           [HttpGet("Articles/{articleId}")]
+        public async Task<ActionResult<ArticleResponse>> ArticlesGetById(int articleId)
+        {
+            var Article = await _motherFeaturesService.ArticlesGetById(articleId);
+            if (Article == null)
+            {
+                return BadRequest();
+            }
+            return Ok(Article);
+        }
+          [HttpGet("Podcasts/{podcastid}")]
+        public async Task<ActionResult<PodcastResponse>> PodcastGetById(int podcastid)
+        {
+            var podcast = await _motherFeaturesService.PodcastsGetById(podcastid);
+            if (podcast == null)
+            {
+                return BadRequest();
+            }
+            return Ok(podcast);
+        }
+
+        [HttpGet("ArabicVideos/Top10")]
+        public async Task<ActionResult<List<VideosResponse>>> ArabicVideosTop10()
+        {
+            var Videos = await _motherFeaturesService.ArabicVideosGetTop(10);
+            if (Videos == null || Videos.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(Videos);
+        }
+
+        [HttpGet("ArabicArticles/Top10")]
+        public async Task<ActionResult<List<ArticleResponse>>> ArabicArticlesTop10()
+        {
+            var articles = await _motherFeaturesService.ArabicArticlesGetAll();
+            if (articles == null || articles.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(articles.Take(10));
+        }
+
+        [HttpGet("EnglishArticles/Top10")]
+        public async Task<ActionResult<List<ArticleResponse>>> EnglishArticlesTop10()
+        {
+            var articles = await _motherFeaturesService.EnglishArticlesGetAll();
+            if (articles == null || articles.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(articles.Take(10));
+        }
+
+        [HttpGet("ArabicPodcasts/Top10")]
+        public async Task<ActionResult<List<PodcastResponse>>> ArabicPodcastsTop10()
+        {
+            var podcasts = await _motherFeaturesService.ArabicPodcastGetAll();
+            if (podcasts == null || podcasts.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(podcasts.Take(10));
+        }
+
+        [HttpGet("EnglishPodcasts/Top10")]
+        public async Task<ActionResult<List<PodcastResponse>>> EnglishPodcastsTop10()
+        {
+            var podcasts = await _motherFeaturesService.EnglishPodcastGetAll();
+            if (podcasts == null || podcasts.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(podcasts.Take(10));
+        }
+
+        [HttpGet("EnglishVideos/Top10")]
+        public async Task<ActionResult<List<VideosResponse>>> EnglishVideosTop10()
+        {
+            var videos = await _motherFeaturesService.EnglishVideossGetAll();
+            if (videos == null || videos.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(videos.Take(10));
+        }
+
+        [HttpGet("TipsAndtricks/Top10")]
+        public async Task<ActionResult<List<TipsandtricksResponse>>> TipsAndtricksTop10()
+        {
+            var tricksResult = await _motherFeaturesService.TipsAndTricksGetAll();
+            if (!tricksResult.IsSuccess || tricksResult.Value == null || tricksResult.Value.Count == 0)
+            {
+                return BadRequest();
+            }
+            return Ok(tricksResult.Value.Take(10));
+        }
+
+        [HttpGet("Articles/Search")]
+        public async Task<ActionResult<List<ArticleResponse>>> SearchArticles([FromQuery] string q)
+        {
+            if (string.IsNullOrWhiteSpace(q))
+            {
+                return BadRequest("Search query cannot be empty.");
+            }
+            var articles = await _motherFeaturesService.SearchArticles(q);
+            if (articles == null || articles.Count == 0)
+            {
+                return NotFound();
+            }
+            return Ok(articles);
         }
     }
 }

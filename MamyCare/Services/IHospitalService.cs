@@ -12,7 +12,7 @@ namespace MamyCare.Services
         public Task<Result> AddToFav(int hospitalId, int userId, CancellationToken cancellationToken);
         public Task<Result<List<GetHospitalsResponse>>> GetFAv(int userId);
         public Task<Result> DeleteFav(int hospitalId, int userId, CancellationToken cancellationToken);
-
-
+        public Task<List<GetHospitalsResponse>> SearchHospitals(string search, int userId);
+        public Task<List<GetGovernoratesResponse>> SearchGovernorates(string search);
     }
 }

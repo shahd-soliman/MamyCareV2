@@ -107,6 +107,26 @@ namespace MamyCare.Controllers
            return Ok();
         }
 
+        [HttpGet("SearchHospitals")]
+        public async Task<ActionResult<List<GetHospitalsResponse>>> SearchHospitals([FromQuery] string q)
+        {
+            var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var id = int.Parse(userIdString!);
+            var results = await _hospitalService.SearchHospitals(q, id);
+            if (results == null || results.Count == 0)
+                return NotFound();
+            return Ok(results);
+        }
+
+        [HttpGet("SearchGovernorates")]
+        public async Task<ActionResult<List<GetGovernoratesResponse>>> SearchGovernorates([FromQuery] string q)
+        {
+            var results = await _hospitalService.SearchGovernorates(q);
+            if (results == null || results.Count == 0)
+                return NotFound();
+            return Ok(results);
+        }
+
     }
 }
 
