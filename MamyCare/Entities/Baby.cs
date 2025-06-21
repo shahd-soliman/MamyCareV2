@@ -39,5 +39,6 @@ namespace MamyCare.Entities
 
         public List<Reminder>? Reminders { get; set; }
         public List<Gallary>? Gallary { get; set; }
+        public List<Todo>? Todos { get; set; }
     }
 }

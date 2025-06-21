@@ -23,6 +23,19 @@ namespace MamyCare.Mapping
           .Map(dest => dest.Description, src => src.Description)
           .Map(dest => dest.IsActive, src => src.IsActive)
           .Map(dest => dest.Date, src => src.Date);
+
+
+            TypeAdapterConfig<TodoRequest, Todo>
+          .NewConfig()
+          .Map(dest => dest.Description, src => src.Description)
+          .Map(dest => dest.Date, src => src.Date);
+
+            TypeAdapterConfig<Todo, TodoResponse>
+          .NewConfig()
+          .Map(dest => dest.id, src => src.Id)
+          .Map(dest => dest.Description, src => src.Description)
+          .Map(dest => dest.Isdone, src => src.Isdone)
+          .Map(dest => dest.Date, src => src.Date);
         }
 
 

@@ -26,6 +26,7 @@ namespace MamyCare.Data
         public DbSet<Video> Videos { get; set; }
         public DbSet<TipsAndTricks> TipsAndTricks { get; set; }
         public DbSet<Gallary> Gallaries { get; set; }
+        public DbSet<Todo> Todos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

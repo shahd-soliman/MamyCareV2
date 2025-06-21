@@ -141,7 +141,7 @@ namespace MamyCare.Controllers
         public async Task<ActionResult<List<VideosResponse>>> ArabicVideosTop10()
         {
             var Videos = await _motherFeaturesService.ArabicVideosGetTop(4);
-            if (Videos == null || Videos.Count == 0)
+            if (Videos == null || Videos?.Count == 0)
             {
                 return BadRequest();
             }
@@ -222,7 +222,7 @@ namespace MamyCare.Controllers
                 return BadRequest("Search query cannot be empty.");
             }
             var articles = await _motherFeaturesService.SearchArticles(q);
-            if (articles == null || articles.Count == 0)
+            if (articles == null || articles?.Count == 0)
             {
                 return NotFound();
             }

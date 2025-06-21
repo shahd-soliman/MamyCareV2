@@ -4,9 +4,14 @@
     {
         public static readonly Error InvalidReminder =
  new("", "Baby reminder  not found.", StatusCodes.Status400BadRequest);
-    
-     public static readonly Error NUllReminders =
+        public static readonly Error InvalidTodo =
+    new("", "Baby reminder  not found.", StatusCodes.Status400BadRequest);
+
+        public static readonly Error NUllReminders =
+ new("", "There is no reminders .", StatusCodes.Status400BadRequest);
+        public static readonly Error NUllTodo =
  new("", "There is no reminders .", StatusCodes.Status400BadRequest);
     }
-
 }
+
+
